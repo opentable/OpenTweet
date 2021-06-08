@@ -57,3 +57,12 @@ What the assignment will NOT be judged on
 * If you try to complete a bonus and can't finish it, that's fine. I'd recommend using git commits/tags to indicate where the bonuses start in the history, so we can easily reset the branch at that commit and validate the minimum requirement.
 
 Happy coding!
+
+Notes
+-----
+
+* Unable to finish Link Preview, actual image preview would not show and instead was only able to present the placeholder.
+* I would have liked to configure the UI in the detailed tweet thread to better visualize main tweet vs tweet replies.
+* I would have also liked to create tappable avatar images that open to the user's profile.
+* Time didn't allow, but I wanted to add heart and retweet buttons as well as highlighted url links.
+
