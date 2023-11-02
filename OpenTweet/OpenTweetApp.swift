@@ -11,7 +11,9 @@ import SwiftUI
 struct OpenTweetApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().task {
+                try? await TweetDataService().loadTweets()
+            }
         }
     }
 }

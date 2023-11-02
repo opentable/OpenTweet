@@ -15,6 +15,8 @@
 		8F2AF7AB2AF424850083943D /* OpenTweetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7AA2AF424850083943D /* OpenTweetUITests.swift */; };
 		8F2AF7AD2AF424850083943D /* OpenTweetUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7AC2AF424850083943D /* OpenTweetUITestsLaunchTests.swift */; };
 		8F2AF7C92AF425050083943D /* timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = 8F2AF7C82AF425050083943D /* timeline.json */; };
+		8F2AF7CE2AF4261E0083943D /* TweetDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7CD2AF4261E0083943D /* TweetDataService.swift */; };
+		8F2AF7D02AF426580083943D /* TweetObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7CF2AF426580083943D /* TweetObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		8F2AF7AA2AF424850083943D /* OpenTweetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTweetUITests.swift; sourceTree = "<group>"; };
 		8F2AF7AC2AF424850083943D /* OpenTweetUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTweetUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8F2AF7C82AF425050083943D /* timeline.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = timeline.json; path = OpenTweet/Data/timeline.json; sourceTree = SOURCE_ROOT; };
+		8F2AF7CD2AF4261E0083943D /* TweetDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetDataService.swift; sourceTree = "<group>"; };
+		8F2AF7CF2AF426580083943D /* TweetObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,8 @@
 		8F2AF7CA2AF4250F0083943D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8F2AF7CD2AF4261E0083943D /* TweetDataService.swift */,
+				8F2AF7CF2AF426580083943D /* TweetObject.swift */,
 				8F2AF7C82AF425050083943D /* timeline.json */,
 			);
 			path = Data;
@@ -271,8 +277,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F2AF7CE2AF4261E0083943D /* TweetDataService.swift in Sources */,
 				8F2AF7912AF424830083943D /* ContentView.swift in Sources */,
 				8F2AF78F2AF424830083943D /* OpenTweetApp.swift in Sources */,
+				8F2AF7D02AF426580083943D /* TweetObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
