@@ -33,5 +33,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView().environmentObject(TweetDataRepository(dataService: TweetDataService()))
+    return ContentView().environmentObject(TweetDataRepository())
 }

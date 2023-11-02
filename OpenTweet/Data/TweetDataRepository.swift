@@ -18,7 +18,7 @@ class TweetDataRepository: ObservableObject {
 
     var dataService: TweetDataService
 
-    init(dataService: TweetDataService) {
+    init(dataService: TweetDataService = TweetDataService()) {
         self.dataService = dataService
         Task {
             do {

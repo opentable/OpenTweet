@@ -8,43 +8,44 @@
 import Foundation
 
 class TweetDataService {
-    private let file = (name: "timeline", extension: "json")
+    let bundle: Bundle
 
-    enum APIError: Error, Equatable {
-        case fileNotFound
-        case decodingError(description: String)
-
-        static func == (lhs: Self, rhs: Self) -> Bool {
-            switch (lhs, rhs) {
-            case (.fileNotFound, .fileNotFound):
-                return true
-            case (.decodingError(_), .decodingError(_)):
-                // ignore description
-                return true
-            default:
-                return false
-            }
-        }
+    init(bundle: Bundle = Bundle.main) {
+        self.bundle = bundle
     }
 
     func loadTweets() async throws -> [Tweet] {
-        if let url = Bundle.main.url(forResource: file.name, withExtension: file.extension) {
+        let data = try await loadData(path: .timeline)
+
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        do {
+            let timeline = try decoder.decode(Timeline.self, from: data)
+
+            print(timeline)
+
+            // convert to local object before returning
+            return timeline.timeline.compactMap { $0.toTweet() }
+        } catch {
+            throw API.APIError.decodingError(description: error.localizedDescription)
+        }
+    }
+
+    func loadData(path: API.Path) async throws -> Data {
+        if let url = getURL(path: path) {
             do {
-                let data = try Data(contentsOf: url)
-
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-
-                let timeline = try decoder.decode(Timeline.self, from: data)
-
-                print(timeline)
-
-                // convert to local object before returning
-                return timeline.timeline.compactMap { $0.toTweet() }
+                return try Data(contentsOf: url)
             } catch {
-                throw APIError.decodingError(description: error.localizedDescription)
+                throw API.APIError.fileNotFound
             }
         }
-        throw APIError.fileNotFound
+        throw API.APIError.fileNotFound
+    }
+
+    func getURL(path: API.Path) -> URL? {
+        switch path {
+        case .timeline:
+            return bundle.url(forResource: "timeline", withExtension: "json")
+        }
     }
 }
