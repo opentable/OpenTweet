@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct OpenTweetApp: App {
+    let dataRepository = TweetDataRepository(dataService: TweetDataService())
+
     var body: some Scene {
         WindowGroup {
-            ContentView().task {
-                try? await TweetDataService().loadTweets()
-            }
+            ContentView().environmentObject(dataRepository)
         }
     }
 }

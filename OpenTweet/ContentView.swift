@@ -8,17 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject private var dataRepository: TweetDataRepository
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        switch dataRepository.data {
+        case .error:
+            Text("Error")
+        case .loading:
+            ProgressView()
+        case .loaded(let tweets):
+            List(tweets, id: \.id) { tweet in
+                VStack(alignment: .leading) {
+                    Text(tweet.author).font(.title2)
+                    Text(tweet.content).font(.body)
+                }
+            }.listStyle(.plain)
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView().environmentObject(TweetDataRepository(dataService: TweetDataService()))
 }

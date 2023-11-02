@@ -17,6 +17,7 @@
 		8F2AF7C92AF425050083943D /* timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = 8F2AF7C82AF425050083943D /* timeline.json */; };
 		8F2AF7CE2AF4261E0083943D /* TweetDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7CD2AF4261E0083943D /* TweetDataService.swift */; };
 		8F2AF7D02AF426580083943D /* TweetObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7CF2AF426580083943D /* TweetObject.swift */; };
+		8F2AF7D42AF4282D0083943D /* TweetDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7D32AF4282D0083943D /* TweetDataRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		8F2AF7C82AF425050083943D /* timeline.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = timeline.json; path = OpenTweet/Data/timeline.json; sourceTree = SOURCE_ROOT; };
 		8F2AF7CD2AF4261E0083943D /* TweetDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetDataService.swift; sourceTree = "<group>"; };
 		8F2AF7CF2AF426580083943D /* TweetObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetObject.swift; sourceTree = "<group>"; };
+		8F2AF7D32AF4282D0083943D /* TweetDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetDataRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			children = (
 				8F2AF7CD2AF4261E0083943D /* TweetDataService.swift */,
 				8F2AF7CF2AF426580083943D /* TweetObject.swift */,
+				8F2AF7D32AF4282D0083943D /* TweetDataRepository.swift */,
 				8F2AF7C82AF425050083943D /* timeline.json */,
 			);
 			path = Data;
@@ -279,6 +282,7 @@
 			files = (
 				8F2AF7CE2AF4261E0083943D /* TweetDataService.swift in Sources */,
 				8F2AF7912AF424830083943D /* ContentView.swift in Sources */,
+				8F2AF7D42AF4282D0083943D /* TweetDataRepository.swift in Sources */,
 				8F2AF78F2AF424830083943D /* OpenTweetApp.swift in Sources */,
 				8F2AF7D02AF426580083943D /* TweetObject.swift in Sources */,
 			);
