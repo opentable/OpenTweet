@@ -11,17 +11,17 @@ struct TweetCell: View {
     let tweet: Tweet
 
     var body: some View {
-        VStack(alignment: .leading, spacing: DisplayConstants.padding) {
+        VStack(alignment: .leading, spacing: DisplayConstants.Sizes.padding) {
             Text(tweet.author).font(.subheadline)
             Text(tweet.formattedDate()).font(.subheadline)
-            Text(tweet.content)
+            HighlightTweetText(content: tweet.content)
                 .font(.headline)
                 .truncationMode(.tail)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(DisplayConstants.padding)
-        .background(DisplayConstants.backgroundColor)
-        .cornerRadius(DisplayConstants.cornerRadius)
+        .padding(DisplayConstants.Sizes.padding)
+        .background(DisplayConstants.Colors.backgroundColor)
+        .cornerRadius(DisplayConstants.Sizes.cornerRadius)
         .onTapGesture {
             print("Selected \(tweet.content)")
         }

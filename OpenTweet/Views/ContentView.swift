@@ -25,7 +25,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                .padding(DisplayConstants.largePadding)
+                .padding(DisplayConstants.Sizes.largePadding)
                 .navigationTitle("Tweeter")
             }
         }
