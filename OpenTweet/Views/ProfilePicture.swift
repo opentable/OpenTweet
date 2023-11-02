@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-struct TweetProfilePicture: View {
+struct ProfilePicture: View {
     var userName: String
     var avatar: String?
+    var size: CGSize = DisplayConstants.Sizes.imageSize
     @State private var image: UIImage?
-    
+
     var body: some View {
-        HStack() {
-            HStack() {
+        HStack {
+            HStack {
                 switch image {
                 case .none:
                     Rectangle()
@@ -26,7 +27,7 @@ struct TweetProfilePicture: View {
                         .clipped()
                 }
             }
-            .frame(width: DisplayConstants.Sizes.imageSize.width, height: DisplayConstants.Sizes.imageSize.height)
+            .frame(width: size.width, height: size.height)
             .background(DisplayConstants.Colors.backgroundColor)
             .cornerRadius(DisplayConstants.Sizes.imageSize.width / 2)
             .padding(0)

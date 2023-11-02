@@ -36,6 +36,7 @@
 		8F2AF7F02AF450350083943D /* LocalDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7EE2AF44BC10083943D /* LocalDataService.swift */; };
 		8F2AF7F42AF455130083943D /* ProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F32AF455130083943D /* ProfilePicture.swift */; };
 		8F2AF7F62AF455640083943D /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F52AF455640083943D /* ImageService.swift */; };
+		8F2AF7F82AF459DE0083943D /* TweetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F72AF459DE0083943D /* TweetDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		8F2AF7EE2AF44BC10083943D /* LocalDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataService.swift; sourceTree = "<group>"; };
 		8F2AF7F32AF455130083943D /* ProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicture.swift; sourceTree = "<group>"; };
 		8F2AF7F52AF455640083943D /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		8F2AF7F72AF459DE0083943D /* TweetDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 			children = (
 				8F2AF7902AF424830083943D /* ContentView.swift */,
 				8F2AF7DF2AF42FD10083943D /* HighlightTweetText.swift */,
+				8F2AF7F72AF459DE0083943D /* TweetDetailView.swift */,
 				8F2AF7D62AF42A970083943D /* TweetCell.swift */,
 				8F2AF7F32AF455130083943D /* ProfilePicture.swift */,
 			);
@@ -350,6 +353,7 @@
 				8F2AF7E02AF42FD10083943D /* HighlightTweetText.swift in Sources */,
 				8F2AF78F2AF424830083943D /* OpenTweetApp.swift in Sources */,
 				8F2AF7F42AF455130083943D /* ProfilePicture.swift in Sources */,
+				8F2AF7F82AF459DE0083943D /* TweetDetailView.swift in Sources */,
 				8F2AF7EF2AF44BC10083943D /* LocalDataService.swift in Sources */,
 				8F2AF7D02AF426580083943D /* TweetObject.swift in Sources */,
 				8F2AF7DB2AF42B1F0083943D /* PreviewConstants.swift in Sources */,

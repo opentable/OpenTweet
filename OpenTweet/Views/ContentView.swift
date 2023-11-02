@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var dataRepository: TweetDataRepository
+    @State var tweetToNavigate: Tweet?
 
     var body: some View {
         NavigationStack {
@@ -21,12 +22,16 @@ struct ContentView: View {
                         ProgressView()
                     case .loaded(let tweets):
                         ForEach(tweets, id: \.id) { tweet in
-                            TweetCell(tweet: tweet)
+                            TweetCell(tweet: tweet, tweetToNavigate: $tweetToNavigate)
                         }
                     }
                 }
                 .padding(DisplayConstants.Sizes.largePadding)
-                .navigationTitle("Tweeter")
+                .navigationTitle(DisplayConstants.appTitle)
+            }.navigationDestination(item: $tweetToNavigate) { tweet in
+                TweetDetailView(
+                    tweet: tweet
+                )
             }
         }
     }

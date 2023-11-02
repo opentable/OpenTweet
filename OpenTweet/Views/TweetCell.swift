@@ -9,11 +9,12 @@ import SwiftUI
 
 struct TweetCell: View {
     let tweet: Tweet
+    @Binding var tweetToNavigate: Tweet?
 
     var body: some View {
         VStack(alignment: .leading, spacing: DisplayConstants.Sizes.padding) {
             HStack {
-                TweetProfilePicture(userName: tweet.author, avatar: tweet.avatar)
+                ProfilePicture(userName: tweet.author, avatar: tweet.avatar)
                 VStack(alignment: .leading) {
                     Text(tweet.author).font(.subheadline)
                     Text(tweet.formattedDate()).font(.subheadline)
@@ -29,10 +30,11 @@ struct TweetCell: View {
         .cornerRadius(DisplayConstants.Sizes.cornerRadius)
         .onTapGesture {
             print("Selected \(tweet.content)")
+            tweetToNavigate = tweet
         }
     }
 }
 
 #Preview {
-    TweetCell(tweet: PreviewConstants.tweet)
+    TweetCell(tweet: PreviewConstants.tweet, tweetToNavigate: .constant(nil))
 }
