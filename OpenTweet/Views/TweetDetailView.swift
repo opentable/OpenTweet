@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TweetDetailView: View {
+    @EnvironmentObject private var viewModel: TweetDetailViewModel
     let tweet: Tweet
 
     var body: some View {
@@ -26,6 +27,16 @@ struct TweetDetailView: View {
                 .background(DisplayConstants.Colors.backgroundColor)
                 .cornerRadius(DisplayConstants.Sizes.cornerRadius)
                 Spacer()
+                switch viewModel.data {
+                    case .loading:
+                        ProgressView()
+                    case .loaded(let tweets):
+                        ForEach(tweets, id: \.id) {
+                            TweetCell(tweet: $0, tweetToNavigate: .constant(nil))
+                        }
+                    case .error:
+                        Text("Error")
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
@@ -43,6 +54,6 @@ struct TweetDetailView: View {
 
 #Preview {
     NavigationStack {
-        TweetDetailView(tweet: PreviewConstants.tweet)
+        TweetDetailView(tweet: PreviewConstants.tweet).environmentObject(TweetDetailViewModel(tweet: PreviewConstants.tweet))
     }
 }

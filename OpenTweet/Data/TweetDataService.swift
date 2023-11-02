@@ -7,8 +7,33 @@
 
 import Foundation
 
+class API {
+    enum Path {
+        case timeline
+        case user
+    }
+
+    enum APIError: Error, Equatable {
+        case fileNotFound
+        case decodingError(description: String)
+
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            switch (lhs, rhs) {
+            case (.fileNotFound, .fileNotFound):
+                return true
+            case (.decodingError(_), .decodingError(_)):
+                // ignore description
+                return true
+            default:
+                return false
+            }
+        }
+    }
+}
+
 class TweetDataService {
     let bundle: Bundle
+    static let shared: TweetDataService = TweetDataService()
 
     init(bundle: Bundle = Bundle.main) {
         self.bundle = bundle
@@ -30,8 +55,16 @@ class TweetDataService {
             throw API.APIError.decodingError(description: error.localizedDescription)
         }
     }
+    
+    func loadUserTweets(userName: String) async throws -> [Tweet] {
+        return try await loadTweets().filter { $0.author == userName }
+    }
+    
+    func loadTweetReplies(tweetId: String) async throws -> [Tweet] {
+        return try await loadTweets().filter { $0.inReplyTo == tweetId }
+    }
 
-    func loadData(path: API.Path) async throws -> Data {
+    private func loadData(path: API.Path) async throws -> Data {
         if let url = getURL(path: path) {
             do {
                 return try Data(contentsOf: url)
@@ -42,9 +75,9 @@ class TweetDataService {
         throw API.APIError.fileNotFound
     }
 
-    func getURL(path: API.Path) -> URL? {
+    private func getURL(path: API.Path) -> URL? {
         switch path {
-        case .timeline:
+        case .timeline, .user:
             return bundle.url(forResource: "timeline", withExtension: "json")
         }
     }

@@ -11,9 +11,10 @@ import SwiftUI
 struct OpenTweetApp: App {
 
     var body: some Scene {
-        let dataRepository = TweetDataRepository(dataService: TweetDataService())
         WindowGroup {
-            ContentView().environmentObject(dataRepository)
+            TimelineView().environmentObject(
+                TimelineViewModel()
+            )
         }
     }
 }

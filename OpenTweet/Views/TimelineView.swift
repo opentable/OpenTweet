@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @EnvironmentObject private var dataRepository: TweetDataRepository
+struct TimelineView: View {
+    @EnvironmentObject private var viewModel: TimelineViewModel
     @State var tweetToNavigate: Tweet?
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    switch dataRepository.data {
+                    switch viewModel.data {
                     case .error:
                         Text("Error")
                     case .loading:
@@ -31,12 +31,12 @@ struct ContentView: View {
             }.navigationDestination(item: $tweetToNavigate) { tweet in
                 TweetDetailView(
                     tweet: tweet
-                )
+                ).environmentObject(TweetDetailViewModel(tweet: tweet))
             }
         }
     }
 }
 
 #Preview {
-    return ContentView().environmentObject(TweetDataRepository())
+    return TimelineView().environmentObject(TimelineViewModel())
 }
