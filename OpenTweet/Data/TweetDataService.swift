@@ -27,7 +27,7 @@ class TweetDataService {
         }
     }
 
-    func loadTweets() async throws -> [TweetObject] {
+    func loadTweets() async throws -> [Tweet] {
         if let url = Bundle.main.url(forResource: file.name, withExtension: file.extension) {
             do {
                 let data = try Data(contentsOf: url)
@@ -36,8 +36,11 @@ class TweetDataService {
                 decoder.dateDecodingStrategy = .iso8601
 
                 let timeline = try decoder.decode(Timeline.self, from: data)
+
                 print(timeline)
-                return timeline.timeline
+
+                // convert to local object before returning
+                return timeline.timeline.compactMap { $0.toTweet() }
             } catch {
                 throw APIError.decodingError(description: error.localizedDescription)
             }

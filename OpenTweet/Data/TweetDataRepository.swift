@@ -10,7 +10,7 @@ import Foundation
 class TweetDataRepository: ObservableObject {
     enum State {
         case loading
-        case loaded(tweets: [TweetObject])
+        case loaded(tweets: [Tweet])
         case error
     }
 
