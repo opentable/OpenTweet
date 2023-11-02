@@ -12,8 +12,13 @@ struct TweetCell: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: DisplayConstants.Sizes.padding) {
-            Text(tweet.author).font(.subheadline)
-            Text(tweet.formattedDate()).font(.subheadline)
+            HStack {
+                TweetProfilePicture(userName: tweet.author, avatar: tweet.avatar)
+                VStack(alignment: .leading) {
+                    Text(tweet.author).font(.subheadline)
+                    Text(tweet.formattedDate()).font(.subheadline)
+                }
+            }
             HighlightTweetText(content: tweet.content)
                 .font(.headline)
                 .truncationMode(.tail)
