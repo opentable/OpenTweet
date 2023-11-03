@@ -31,4 +31,13 @@ class TimelineViewModel: ObservableObject {
             }
         }
     }
+
+    func getUser(userName: String) async -> User? {
+        do {
+            let user = try await dataService.loadUser(userName: userName)
+            return user
+        } catch {
+            return nil
+        }
+    }
 }

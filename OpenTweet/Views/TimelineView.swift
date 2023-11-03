@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TimelineView: View {
     @EnvironmentObject private var viewModel: TimelineViewModel
-    @State var tweetToNavigate: Tweet?
     @State var userToNavigate: User?
 
     var body: some View {
@@ -22,17 +21,38 @@ struct TimelineView: View {
                     ProgressView()
                 case .loaded(let tweets):
                     ForEach(tweets, id: \.id) { tweet in
-                        TweetCell(tweet: tweet, tweetToNavigate: $tweetToNavigate, userToNavigate: $userToNavigate).cellStyling
+                        NavigationLink(value: tweet) {
+                            TweetCell(tweet: tweet).cellStyling
+                        }.buttonStyle(.plain)
                     }
                 }
             }
             .padding(DisplayConstants.Sizes.largePadding)
             .navigationTitle(DisplayConstants.appTitle)
         }.navigationTitle(DisplayConstants.appTitle)
-            .navigationDestination(item: $tweetToNavigate) { tweet in
-            TweetDetailView().environmentObject(TweetDetailViewModel(tweet: tweet))
-        }.navigationDestination(item: $userToNavigate) { user in
-            UserTweetsView().environmentObject(UserTweetsViewModel(user: user))
+            .navigationDestination(for: Tweet.self) { tweet in
+                TweetDetailView().environmentObject(TweetDetailViewModel(tweet: tweet))
+            }.navigationDestination(for: User.self) { user in
+                UserTweetsView().environmentObject(UserTweetsViewModel(user: user))
+            }.navigationDestination(item: $userToNavigate) { user in
+                UserTweetsView().environmentObject(UserTweetsViewModel(user: user))
+            }.onOpenURL(perform: { url in
+                selectDeepLink(url)
+            })
+    }
+
+    func selectDeepLink(_ url: URL) {
+        guard userToNavigate == nil else {
+            return
+        }
+        if let type = DeepLinkManager.handleIncomingURL(url) {
+            switch type {
+            case .user(let userName):
+                Task {
+                    let user = await viewModel.getUser(userName: userName)
+                    userToNavigate = user
+                }
+            }
         }
     }
 }

@@ -20,11 +20,11 @@ struct UserTweetsView: View {
                     ProgressView()
                 case .loaded(let tweets):
                     ForEach(tweets, id: \.id) { tweet in
-                        TweetCell(
-                            tweet: tweet,
-                            tweetToNavigate: $tweetToNavigate,
-                            userToNavigate: $userToNavigate
-                        ).cellStyling
+                        NavigationLink(value: tweet) {
+                            TweetCell(
+                                tweet: tweet
+                            ).cellStyling
+                        }.buttonStyle(.plain)
                     }
                 case .error:
                     Text(LocalizableStrings.error.stringValue)

@@ -12,6 +12,7 @@ protocol TweetDataServiceable {
     func loadUserTweets(userName: String) async throws -> [Tweet]
     func loadTweetReplies(tweetId: String) async throws -> [Tweet]
     func loadTweet(tweetId: String) async throws -> Tweet?
+    func loadUser(userName: String) async throws -> User?
 }
 
 class TweetDataService: TweetDataServiceable {
@@ -49,6 +50,10 @@ class TweetDataService: TweetDataServiceable {
 
     func loadTweet(tweetId: String) async throws -> Tweet? {
         return try await loadTweets().first { $0.id == tweetId }
+    }
+
+    func loadUser(userName: String) async throws -> User? {
+        return try await loadTweets().first { $0.author == userName }?.toUser()
     }
 
     private func loadData(path: API.Path) async throws -> Data {

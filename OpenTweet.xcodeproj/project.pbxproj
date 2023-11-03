@@ -59,6 +59,7 @@
 		8FC5D5992AF5751600ADD5E9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8FC5D5982AF5751600ADD5E9 /* Localizable.xcstrings */; };
 		8FC5D59B2AF575AC00ADD5E9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D59A2AF575AC00ADD5E9 /* Strings.swift */; };
 		8FC5D59E2AF57BDA00ADD5E9 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D59D2AF57BDA00ADD5E9 /* DateUtils.swift */; };
+		8FC5D5A32AF5886000ADD5E9 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D5A22AF5886000ADD5E9 /* DeepLink.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,8 @@
 		8FC5D5982AF5751600ADD5E9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		8FC5D59A2AF575AC00ADD5E9 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		8FC5D59D2AF57BDA00ADD5E9 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		8FC5D5A12AF5873500ADD5E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8FC5D5A22AF5886000ADD5E9 /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,7 @@
 		8F2AF78D2AF424830083943D /* OpenTweet */ = {
 			isa = PBXGroup;
 			children = (
+				8FC5D5A12AF5873500ADD5E9 /* Info.plist */,
 				8FC5D5902AF5641200ADD5E9 /* API */,
 				8FC5D58F2AF5640700ADD5E9 /* ViewModel */,
 				8F2AF7DE2AF42BDF0083943D /* Utility */,
@@ -251,6 +255,7 @@
 				8F2AF80D2AF5568A0083943D /* ViewExtensions.swift */,
 				8FC5D59A2AF575AC00ADD5E9 /* Strings.swift */,
 				8FC5D59D2AF57BDA00ADD5E9 /* DateUtils.swift */,
+				8FC5D5A22AF5886000ADD5E9 /* DeepLink.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -435,6 +440,7 @@
 				8F2AF80E2AF5568A0083943D /* ViewExtensions.swift in Sources */,
 				8F2AF7D72AF42A970083943D /* TweetCell.swift in Sources */,
 				8F2AF7EC2AF44AE80083943D /* MockBundle.swift in Sources */,
+				8FC5D5A32AF5886000ADD5E9 /* DeepLink.swift in Sources */,
 				8F2AF7E02AF42FD10083943D /* HighlightTweetText.swift in Sources */,
 				8F2AF8022AF538220083943D /* TweetRepliesView.swift in Sources */,
 				8F2AF78F2AF424830083943D /* OpenTweetApp.swift in Sources */,
@@ -626,6 +632,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"OpenTweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenTweet/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -662,6 +669,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"OpenTweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenTweet/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

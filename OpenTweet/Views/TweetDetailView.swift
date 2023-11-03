@@ -9,22 +9,19 @@ import SwiftUI
 
 struct TweetDetailView: View {
     @EnvironmentObject private var viewModel: TweetDetailViewModel
-    @State var tweetToNavigate: Tweet?
-    @State var userToNavigate: User?
 
     func replyToView(replyTo: Tweet) -> some View {
-        VStack(alignment: .leading) {
-            Text(LocalizableStrings.inReplyTo.stringValue).font(.headline)
-            VStack {
-                TweetCell(
-                    tweet: replyTo,
-                    tweetToNavigate: $tweetToNavigate,
-                    userToNavigate: $userToNavigate
-                )
-            }.padding(8)
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(8)
-        }
+        NavigationLink(value: replyTo) {
+            VStack(alignment: .leading) {
+                Text(LocalizableStrings.inReplyTo.stringValue).font(.headline)
+                VStack {
+                    TweetCell(
+                        tweet: replyTo
+                    )}.padding(DisplayConstants.Sizes.padding)
+                    .background(DisplayConstants.Colors.backgroundColor)
+                    .cornerRadius(DisplayConstants.Sizes.cornerRadius)
+            }
+        }.buttonStyle(.plain)
     }
 
     var headerView: some View {
@@ -54,29 +51,22 @@ struct TweetDetailView: View {
                         Text(LocalizableStrings.error.stringValue)
                     }
                 }.cellStyling
-                TweetParentRepliesView(
-                    tweetToNavigate: $tweetToNavigate,
-                    userToNavigate: $userToNavigate
-                ).environmentObject(TweetRepliesViewModel(tweet: viewModel.tweet))
+                TweetParentRepliesView()
+                    .environmentObject(TweetRepliesViewModel(tweet: viewModel.tweet))
             }
             .padding(DisplayConstants.Sizes.largePadding)
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
-                HStack {
-                    ProfilePicture(user: viewModel.tweet.toUser(), size: DisplayConstants.Sizes.imageSizeSmall)
-                    Text(viewModel.tweet.author).font(.subheadline)
-                }.onTapGesture {
-                    userToNavigate = viewModel.tweet.toUser()
-                }
+                NavigationLink(value: viewModel.tweet.toUser()) {
+                    HStack {
+                        ProfilePicture(user: viewModel.tweet.toUser(), size: DisplayConstants.Sizes.imageSizeSmall)
+                        Text(viewModel.tweet.author).font(.subheadline)
+                    }
+                }.buttonStyle(.plain)
             }}
         .navigationTitle(viewModel.tweet.content)
         .navigationBarTitleDisplayMode(.inline)
-        .navigationDestination(item: $tweetToNavigate) { tweet in
-            TweetDetailView().environmentObject(TweetDetailViewModel(tweet: tweet))
-        }.navigationDestination(item: $userToNavigate) { user in
-            UserTweetsView().environmentObject(UserTweetsViewModel(user: user))
-        }
     }
 }
 

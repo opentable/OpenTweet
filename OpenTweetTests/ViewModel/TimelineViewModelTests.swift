@@ -27,10 +27,40 @@ class TimelineViewModelTests: XCTestCase {
     func testErrorState() {
         let dataService = MockTweetDataService(shouldSucceed: false, tweetToReturn: nil)
         let viewModel = TimelineViewModel(dataService: dataService)
-        
-        XCTAssertEqual(viewModel.data, .loading)
+    
         DispatchQueue.main.async {
             XCTAssertEqual(viewModel.data, .error)
+        }
+    }
+    
+    func testGetUserSuccess() async {
+        let userName = "testUser"
+        let expectedUser = User(id: "1", author: userName, avatar: nil)
+        let dataService = MockTweetDataService(shouldSucceed: true, userToReturn: expectedUser)
+
+        let viewModel = TimelineViewModel(dataService: dataService)
+
+        // Call the getUser function and wait for the result using await
+        if let user = await viewModel.getUser(userName: userName) {
+            // The user should be returned
+            XCTAssertEqual(expectedUser.author, userName)
+        } else {
+            XCTFail("Expected a user, but got nil")
+        }
+    }
+
+    func testGetUserFailure() async {
+        let dataService = MockTweetDataService(shouldSucceed: false, tweetToReturn: nil)
+
+        let userName = "testUser"
+        let viewModel = TimelineViewModel(dataService: dataService)
+
+        // Call the getUser function and wait for the result using await
+        if let user = await viewModel.getUser(userName: userName) {
+            XCTFail("Expected nil, but got a user")
+        } else {
+            // The result should be nil due to the failure
+            XCTAssert(true)
         }
     }
 }

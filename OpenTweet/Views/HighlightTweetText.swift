@@ -28,6 +28,11 @@ struct HighlightTweetText: View {
                     .foregroundColor(accentColor)
                     .underline()
             } else if mentionMatch {
+                attributedSubstring.link = URL(
+                    string: DeepLinkManager.LinkType.user(
+                        username: substring.string
+                    ).linkValue
+                )
                 text = text + Text(attributedSubstring)
                     .foregroundColor(accentColor)
             } else {
