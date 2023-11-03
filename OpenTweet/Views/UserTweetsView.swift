@@ -19,8 +19,12 @@ struct UserTweetsView: View {
                     ProgressView()
                 case .loaded(let tweets):
                     ForEach(tweets, id: \.id) { tweet in
-                        TweetCell(tweet: tweet, tweetToNavigate: .constant(nil), userToNavigate: .constant(nil)).listRowSeparator(.hidden)
-                    }.listStyle(.plain)
+                        TweetCell(
+                            tweet: tweet,
+                            tweetToNavigate: .constant(nil),
+                            userToNavigate: .constant(nil)
+                        ).cellStyling
+                    }
                 case .error:
                     Text("Error")
                 }
