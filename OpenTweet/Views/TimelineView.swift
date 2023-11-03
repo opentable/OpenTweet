@@ -34,8 +34,7 @@ struct TimelineView: View {
                     tweet: tweet
                 ).environmentObject(TweetDetailViewModel(tweet: tweet))
             }.navigationDestination(item: $userToNavigate) { user in
-                UserTweetsView(user: user)
-                    .environmentObject(UserTweetsViewModel(user: user))
+                UserTweetsView().environmentObject(UserTweetsViewModel(user: user))
             }
         }
     }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct UserTweetsView: View {
     @EnvironmentObject private var viewModel: UserTweetsViewModel
-    let user: User
 
     var body: some View {
         ScrollView {
@@ -33,8 +32,8 @@ struct UserTweetsView: View {
         }.toolbar {
             ToolbarItem(placement: .principal) {
                 HStack {
-                    ProfilePicture(user: user, size: DisplayConstants.Sizes.imageSizeSmall)
-                    Text(user.author).font(.subheadline)
+                    ProfilePicture(user: viewModel.user, size: DisplayConstants.Sizes.imageSizeSmall)
+                    Text(viewModel.user.author).font(.subheadline)
                 }
             }
         }.navigationBarTitleDisplayMode(.inline)
@@ -42,5 +41,8 @@ struct UserTweetsView: View {
 }
 
 #Preview {
-    UserTweetsView(user: PreviewConstants.tweet.toUser())
+    NavigationStack{
+        UserTweetsView()
+            .environmentObject(UserTweetsViewModel(user: PreviewConstants.replyTweet.toUser()))
+    }
 }

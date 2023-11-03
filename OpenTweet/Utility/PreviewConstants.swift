@@ -18,7 +18,7 @@ enum PreviewConstants {
     )
     static let replyTweet: Tweet = Tweet(
         id: "00002",
-        author: "@landonr",
+        author: "@randomInternetStranger",
         content: "cool",
         avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/PNG_Test.png/477px-PNG_Test.png?20231028084532",
         date: .now,

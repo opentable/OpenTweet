@@ -15,6 +15,17 @@
         }
       }
     },
+    "inReplyTo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replying To"
+          }
+        }
+      }
+    },
     "replies" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -22,17 +33,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Replies"
-          }
-        }
-      }
-    },
-    "replyingTo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Replying To"
           }
         }
       }
