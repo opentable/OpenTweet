@@ -10,6 +10,7 @@ import SwiftUI
 struct TimelineView: View {
     @EnvironmentObject private var viewModel: TimelineViewModel
     @State var tweetToNavigate: Tweet?
+    @State var userToNavigate: User?
 
     var body: some View {
         NavigationStack {
@@ -22,7 +23,7 @@ struct TimelineView: View {
                         ProgressView()
                     case .loaded(let tweets):
                         ForEach(tweets, id: \.id) { tweet in
-                            TweetCell(tweet: tweet, tweetToNavigate: $tweetToNavigate)
+                            TweetCell(tweet: tweet, tweetToNavigate: $tweetToNavigate, userToNavigate: $userToNavigate)
                         }
                     }
                 }
@@ -32,6 +33,9 @@ struct TimelineView: View {
                 TweetDetailView(
                     tweet: tweet
                 ).environmentObject(TweetDetailViewModel(tweet: tweet))
+            }.navigationDestination(item: $userToNavigate) { user in
+                UserTweetsView(user: user)
+                    .environmentObject(UserTweetsViewModel(user: user))
             }
         }
     }

@@ -55,11 +55,11 @@ class TweetDataService {
             throw API.APIError.decodingError(description: error.localizedDescription)
         }
     }
-    
+
     func loadUserTweets(userName: String) async throws -> [Tweet] {
         return try await loadTweets().filter { $0.author == userName }
     }
-    
+
     func loadTweetReplies(tweetId: String) async throws -> [Tweet] {
         return try await loadTweets().filter { $0.inReplyTo == tweetId }
     }

@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ProfilePicture: View {
-    var userName: String
-    var avatar: String?
+    var user: User
     var size: CGSize = DisplayConstants.Sizes.imageSize
     @State private var image: UIImage?
 
@@ -32,7 +31,7 @@ struct ProfilePicture: View {
             .cornerRadius(DisplayConstants.Sizes.imageSize.width / 2)
             .padding(0)
         }.task {
-            if let avatar = avatar, let url = URL(string: avatar) {
+            if let avatar = user.avatar, let url = URL(string: avatar) {
                 let image = try? await ImageService.getImage(url: url)
                 await MainActor.run {
                     self.image = image

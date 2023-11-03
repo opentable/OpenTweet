@@ -1,5 +1,5 @@
 //
-//  TweetDetailViewModel.swift
+//  UserTweetsViewModel.swift
 //  OpenTweet
 //
 //  Created by Landon Rohatensky on 2023-11-02.
@@ -7,24 +7,25 @@
 
 import Foundation
 
-class TweetDetailViewModel: ObservableObject {
+class UserTweetsViewModel: ObservableObject {
     enum State {
         case loading
-        case loaded(replies: [Tweet])
+        case loaded(tweets: [Tweet])
         case error
     }
 
     @Published private(set) var data: State = .loading
-
+    var user: User
     var dataService: TweetDataService
 
-    init(dataService: TweetDataService = TweetDataService.shared, tweet: Tweet) {
+    init(dataService: TweetDataService = TweetDataService.shared, user: User) {
+        self.user = user
         self.dataService = dataService
         Task {
             do {
-                let tweets = try await dataService.loadTweetReplies(tweetId: tweet.id)
+                let tweets = try await dataService.loadUserTweets(userName: user.author)
                 DispatchQueue.main.async {
-                    self.data = State.loaded(replies: tweets)
+                    self.data = State.loaded(tweets: tweets)
                 }
             } catch {
                 data = .error

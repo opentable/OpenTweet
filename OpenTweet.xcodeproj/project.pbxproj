@@ -36,6 +36,9 @@
 		8F2AF7F62AF455640083943D /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F52AF455640083943D /* ImageService.swift */; };
 		8F2AF7F82AF459DE0083943D /* TweetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F72AF459DE0083943D /* TweetDetailView.swift */; };
 		8F2AF7FA2AF45F090083943D /* TweetDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F92AF45F090083943D /* TweetDetailViewModel.swift */; };
+		8F2AF7FC2AF52D520083943D /* UserTweetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7FB2AF52D520083943D /* UserTweetsView.swift */; };
+		8F2AF7FE2AF52D780083943D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7FD2AF52D780083943D /* User.swift */; };
+		8F2AF8002AF52EB90083943D /* UserTweetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7FF2AF52EB90083943D /* UserTweetsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +87,9 @@
 		8F2AF7F52AF455640083943D /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		8F2AF7F72AF459DE0083943D /* TweetDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailView.swift; sourceTree = "<group>"; };
 		8F2AF7F92AF45F090083943D /* TweetDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetDetailViewModel.swift; sourceTree = "<group>"; };
+		8F2AF7FB2AF52D520083943D /* UserTweetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTweetsView.swift; sourceTree = "<group>"; };
+		8F2AF7FD2AF52D780083943D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8F2AF7FF2AF52EB90083943D /* UserTweetsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTweetsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,9 +184,11 @@
 				8F2AF7F52AF455640083943D /* ImageService.swift */,
 				8F2AF7D32AF4282D0083943D /* TimelineViewModel.swift */,
 				8F2AF7F92AF45F090083943D /* TweetDetailViewModel.swift */,
+				8F2AF7FF2AF52EB90083943D /* UserTweetsViewModel.swift */,
 				8F2AF7CD2AF4261E0083943D /* TweetDataService.swift */,
 				8F2AF7CF2AF426580083943D /* TweetObject.swift */,
 				8F2AF7D82AF42AB20083943D /* Tweet.swift */,
+				8F2AF7FD2AF52D780083943D /* User.swift */,
 				8F2AF7C82AF425050083943D /* timeline.json */,
 			);
 			path = Data;
@@ -194,6 +202,7 @@
 				8F2AF7F72AF459DE0083943D /* TweetDetailView.swift */,
 				8F2AF7D62AF42A970083943D /* TweetCell.swift */,
 				8F2AF7F32AF455130083943D /* ProfilePicture.swift */,
+				8F2AF7FB2AF52D520083943D /* UserTweetsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -347,12 +356,15 @@
 				8F2AF7D42AF4282D0083943D /* TimelineViewModel.swift in Sources */,
 				8F2AF7E22AF43BC70083943D /* AttributedTweetStringMatch.swift in Sources */,
 				8F2AF7D92AF42AB20083943D /* Tweet.swift in Sources */,
+				8F2AF8002AF52EB90083943D /* UserTweetsViewModel.swift in Sources */,
 				8F2AF7D72AF42A970083943D /* TweetCell.swift in Sources */,
 				8F2AF7EC2AF44AE80083943D /* MockBundle.swift in Sources */,
 				8F2AF7E02AF42FD10083943D /* HighlightTweetText.swift in Sources */,
 				8F2AF78F2AF424830083943D /* OpenTweetApp.swift in Sources */,
 				8F2AF7F42AF455130083943D /* ProfilePicture.swift in Sources */,
+				8F2AF7FC2AF52D520083943D /* UserTweetsView.swift in Sources */,
 				8F2AF7F82AF459DE0083943D /* TweetDetailView.swift in Sources */,
+				8F2AF7FE2AF52D780083943D /* User.swift in Sources */,
 				8F2AF7FA2AF45F090083943D /* TweetDetailViewModel.swift in Sources */,
 				8F2AF7D02AF426580083943D /* TweetObject.swift in Sources */,
 				8F2AF7DB2AF42B1F0083943D /* PreviewConstants.swift in Sources */,

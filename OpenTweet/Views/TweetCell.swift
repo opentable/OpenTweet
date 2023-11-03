@@ -10,11 +10,15 @@ import SwiftUI
 struct TweetCell: View {
     let tweet: Tweet
     @Binding var tweetToNavigate: Tweet?
+    @Binding var userToNavigate: User?
 
     var body: some View {
         VStack(alignment: .leading, spacing: DisplayConstants.Sizes.padding) {
             HStack {
-                ProfilePicture(userName: tweet.author, avatar: tweet.avatar)
+                ProfilePicture(user: tweet.toUser())
+                    .onTapGesture {
+                        userToNavigate = tweet.toUser()
+                    }
                 VStack(alignment: .leading) {
                     Text(tweet.author).font(.subheadline)
                     Text(tweet.formattedDate()).font(.subheadline)
@@ -36,5 +40,5 @@ struct TweetCell: View {
 }
 
 #Preview {
-    TweetCell(tweet: PreviewConstants.tweet, tweetToNavigate: .constant(nil))
+    TweetCell(tweet: PreviewConstants.tweet, tweetToNavigate: .constant(nil), userToNavigate: .constant(nil))
 }

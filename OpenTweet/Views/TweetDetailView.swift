@@ -13,7 +13,7 @@ struct TweetDetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: DisplayConstants.Sizes.padding) {
                     HighlightTweetText(content: tweet.content)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -23,32 +23,32 @@ struct TweetDetailView: View {
                         .cornerRadius(DisplayConstants.Sizes.cornerRadius)
                     Text(tweet.formattedDate()).font(.subheadline)
                 }
-                .padding(DisplayConstants.Sizes.padding)
-                .background(DisplayConstants.Colors.backgroundColor)
                 .cornerRadius(DisplayConstants.Sizes.cornerRadius)
-                Spacer()
                 switch viewModel.data {
                     case .loading:
                         ProgressView()
-                    case .loaded(let tweets):
-                        ForEach(tweets, id: \.id) {
-                            TweetCell(tweet: $0, tweetToNavigate: .constant(nil))
+                    case .loaded(let replies):
+                    if !replies.isEmpty {
+                        Divider()
+                        Text("Replies").font(.headline)
+                        ForEach(replies, id: \.id) {
+                            TweetCell(tweet: $0, tweetToNavigate: .constant(nil), userToNavigate: .constant(nil))
                         }
+                    }
                     case .error:
                         Text("Error")
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(DisplayConstants.Sizes.largePadding)
         }
-        .navigationBarTitle(tweet.author, displayMode: .inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 HStack {
-                    ProfilePicture(userName: tweet.author, avatar: tweet.avatar, size: DisplayConstants.Sizes.imageSizeSmall)
+                    ProfilePicture(user: tweet.toUser(), size: DisplayConstants.Sizes.imageSizeSmall)
                     Text(tweet.author).font(.subheadline)
                 }
             }
-        }.padding(DisplayConstants.Sizes.padding)
+        }.navigationBarTitleDisplayMode(.inline)
     }
 }
 
