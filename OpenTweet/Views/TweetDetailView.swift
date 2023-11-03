@@ -11,7 +11,7 @@ struct TweetDetailView: View {
     @EnvironmentObject private var viewModel: TweetDetailViewModel
     @State var tweetToNavigate: Tweet?
     @State var userToNavigate: User?
-    
+
     func replyToView(replyTo: Tweet) -> some View {
         VStack(alignment: .leading) {
             Text(LocalizableStrings.inReplyTo.stringValue).font(.headline)
@@ -26,7 +26,7 @@ struct TweetDetailView: View {
                 .cornerRadius(8)
         }
     }
-    
+
     var headerView: some View {
         VStack(spacing: DisplayConstants.Sizes.padding) {
             HighlightTweetText(content: viewModel.tweet.content)
@@ -37,7 +37,7 @@ struct TweetDetailView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -66,6 +66,8 @@ struct TweetDetailView: View {
                 HStack {
                     ProfilePicture(user: viewModel.tweet.toUser(), size: DisplayConstants.Sizes.imageSizeSmall)
                     Text(viewModel.tweet.author).font(.subheadline)
+                }.onTapGesture {
+                    userToNavigate = viewModel.tweet.toUser()
                 }
             }}
         .navigationTitle(viewModel.tweet.content)
