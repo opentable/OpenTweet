@@ -26,7 +26,7 @@ struct UserTweetsView: View {
                         ).cellStyling
                     }
                 case .error:
-                    Text("Error")
+                    Text(LocalizableStrings.error.stringValue)
                 }
             }.padding(DisplayConstants.Sizes.padding)
             Spacer()

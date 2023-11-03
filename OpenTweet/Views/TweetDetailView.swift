@@ -10,10 +10,10 @@ import SwiftUI
 struct TweetDetailView: View {
     @EnvironmentObject private var viewModel: TweetDetailViewModel
     let tweet: Tweet
-    
+
     func replyToView(replyTo: Tweet) -> some View {
         VStack(alignment: .leading) {
-            Text("Replying to").font(.headline)
+            Text(LocalizableStrings.inReplyTo.stringValue).font(.headline)
             VStack {
                 TweetCell(tweet: replyTo, tweetToNavigate: .constant(nil), userToNavigate: .constant(nil))
             }.padding(8)
@@ -21,7 +21,7 @@ struct TweetDetailView: View {
                 .cornerRadius(8)
         }
     }
-    
+
     var headerView: some View {
         VStack(spacing: DisplayConstants.Sizes.padding) {
             HighlightTweetText(content: tweet.content)
@@ -32,7 +32,7 @@ struct TweetDetailView: View {
                 .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
-    
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -46,7 +46,7 @@ struct TweetDetailView: View {
                             replyToView(replyTo: replyTo)
                         }
                     case .error:
-                        Text("Error")
+                        Text(LocalizableStrings.error.stringValue)
                     }
                 }.cellStyling
                 TweetParentRepliesView().environmentObject(TweetRepliesViewModel(tweet: tweet))

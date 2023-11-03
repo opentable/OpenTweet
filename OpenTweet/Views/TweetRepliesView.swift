@@ -37,7 +37,7 @@ struct TweetRepliesView: View {
                     .background(.clear)
                 }
             case .error:
-                Text("Error")
+                Text(LocalizableStrings.error.stringValue)
             case .maxDepth:
                 EmptyView()
             }

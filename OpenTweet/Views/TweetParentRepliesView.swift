@@ -17,7 +17,7 @@ struct TweetParentRepliesView: View {
         case .loaded(let replies):
             if !replies.isEmpty {
                 Divider()
-                Text("Replies").font(.headline)
+                Text(LocalizableStrings.replies.stringValue).font(.headline)
                 VStack(alignment: .leading, spacing: DisplayConstants.Sizes.padding) {
                     ForEach(replies, id: \.id) {
                         TweetRepliesView().environmentObject(TweetRepliesViewModel(tweet: $0, depth: viewModel.depth + 1))
@@ -26,7 +26,7 @@ struct TweetParentRepliesView: View {
                 }
             }
         case .error:
-            Text("Error")
+            Text(LocalizableStrings.error.stringValue)
         case .maxDepth:
             EmptyView()
         }

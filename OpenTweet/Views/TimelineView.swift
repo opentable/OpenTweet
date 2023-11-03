@@ -18,7 +18,7 @@ struct TimelineView: View {
                 VStack {
                     switch viewModel.data {
                     case .error:
-                        Text("Error")
+                        Text(LocalizableStrings.error.stringValue)
                     case .loading:
                         ProgressView()
                     case .loaded(let tweets):
