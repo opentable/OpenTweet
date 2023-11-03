@@ -9,6 +9,8 @@ import SwiftUI
 
 struct UserTweetsView: View {
     @EnvironmentObject private var viewModel: UserTweetsViewModel
+    @State var tweetToNavigate: Tweet?
+    @State var userToNavigate: User?
 
     var body: some View {
         ScrollView {
@@ -20,8 +22,8 @@ struct UserTweetsView: View {
                     ForEach(tweets, id: \.id) { tweet in
                         TweetCell(
                             tweet: tweet,
-                            tweetToNavigate: .constant(nil),
-                            userToNavigate: .constant(nil)
+                            tweetToNavigate: $tweetToNavigate,
+                            userToNavigate: $userToNavigate
                         ).cellStyling
                     }
                 case .error:
@@ -35,8 +37,14 @@ struct UserTweetsView: View {
                     ProfilePicture(user: viewModel.user, size: DisplayConstants.Sizes.imageSizeSmall)
                     Text(viewModel.user.author).font(.subheadline)
                 }
-            }
-        }.navigationBarTitleDisplayMode(.inline)
+            }}
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(viewModel.user.author)
+        .navigationDestination(item: $tweetToNavigate) { tweet in
+            TweetDetailView().environmentObject(TweetDetailViewModel(tweet: tweet))
+        }.navigationDestination(item: $userToNavigate) { user in
+            UserTweetsView().environmentObject(UserTweetsViewModel(user: user))
+        }
     }
 }
 

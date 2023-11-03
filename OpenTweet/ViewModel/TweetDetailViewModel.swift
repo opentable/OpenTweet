@@ -17,9 +17,11 @@ class TweetDetailViewModel: ObservableObject {
     @Published private(set) var data: State = .loading
 
     var dataService: TweetDataServiceable
+    let tweet: Tweet
 
     init(dataService: TweetDataServiceable = TweetDataService.shared, tweet: Tweet) {
         self.dataService = dataService
+        self.tweet = tweet
         guard let inReplyTo = tweet.inReplyTo else {
             data = .loaded(replyTo: nil)
             return

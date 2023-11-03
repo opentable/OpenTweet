@@ -29,10 +29,9 @@ struct TimelineView: View {
                 }
                 .padding(DisplayConstants.Sizes.largePadding)
                 .navigationTitle(DisplayConstants.appTitle)
-            }.navigationDestination(item: $tweetToNavigate) { tweet in
-                TweetDetailView(
-                    tweet: tweet
-                ).environmentObject(TweetDetailViewModel(tweet: tweet))
+            }.navigationTitle(DisplayConstants.appTitle)
+                .navigationDestination(item: $tweetToNavigate) { tweet in
+                TweetDetailView().environmentObject(TweetDetailViewModel(tweet: tweet))
             }.navigationDestination(item: $userToNavigate) { user in
                 UserTweetsView().environmentObject(UserTweetsViewModel(user: user))
             }
