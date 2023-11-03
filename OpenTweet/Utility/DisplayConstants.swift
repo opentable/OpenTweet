@@ -24,4 +24,5 @@ enum DisplayConstants {
 
     static let appTitle = "OpenTweet"
     static let rightArrowName = "arrowshape.turn.up.right.fill"
+    static let dateFormat = "MMMM d, yyyy 'at' h:mm a"
 }

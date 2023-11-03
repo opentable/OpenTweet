@@ -11,6 +11,10 @@ enum LocalizableStrings: String {
     case inReplyTo
     case error
     case replies
+    case secondsAgo
+    case minutesAgo
+    case hoursAgo
+    case justNow
 
     var stringValue: String {
         return NSLocalizedString(self.rawValue, comment: "")

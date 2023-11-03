@@ -58,6 +58,7 @@
 		8FC5D5972AF5653A00ADD5E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7FD2AF52D780083943D /* User.swift */; };
 		8FC5D5992AF5751600ADD5E9 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8FC5D5982AF5751600ADD5E9 /* Localizable.xcstrings */; };
 		8FC5D59B2AF575AC00ADD5E9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D59A2AF575AC00ADD5E9 /* Strings.swift */; };
+		8FC5D59E2AF57BDA00ADD5E9 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D59D2AF57BDA00ADD5E9 /* DateUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		8FC5D5942AF564D000ADD5E9 /* UserTweetsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTweetsViewModelTests.swift; sourceTree = "<group>"; };
 		8FC5D5982AF5751600ADD5E9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		8FC5D59A2AF575AC00ADD5E9 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		8FC5D59D2AF57BDA00ADD5E9 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 				8F2AF7EB2AF44AE80083943D /* MockBundle.swift */,
 				8F2AF80D2AF5568A0083943D /* ViewExtensions.swift */,
 				8FC5D59A2AF575AC00ADD5E9 /* Strings.swift */,
+				8FC5D59D2AF57BDA00ADD5E9 /* DateUtils.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				8F2AF8082AF540820083943D /* TweetRepliesViewModel.swift in Sources */,
 				8F2AF7CE2AF4261E0083943D /* TweetDataService.swift in Sources */,
 				8F2AF7F62AF455640083943D /* ImageService.swift in Sources */,
+				8FC5D59E2AF57BDA00ADD5E9 /* DateUtils.swift in Sources */,
 				8F2AF7912AF424830083943D /* TimelineView.swift in Sources */,
 				8F2AF7DD2AF42BA90083943D /* DisplayConstants.swift in Sources */,
 				8F2AF7D42AF4282D0083943D /* TimelineViewModel.swift in Sources */,

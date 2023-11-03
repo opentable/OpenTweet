@@ -41,7 +41,7 @@ struct UserTweetsView: View {
 }
 
 #Preview {
-    NavigationStack{
+    NavigationStack {
         UserTweetsView()
             .environmentObject(UserTweetsViewModel(user: PreviewConstants.replyTweet.toUser()))
     }

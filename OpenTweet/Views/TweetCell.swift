@@ -21,7 +21,7 @@ struct TweetCell: View {
                     }
                 VStack(alignment: .leading) {
                     Text(tweet.author).font(.subheadline)
-                    Text(tweet.formattedDate()).font(.subheadline)
+                    Text(DateUtils.formatTimeAgo(from: tweet.date)).font(.subheadline)
                 }
             }
             HighlightTweetText(content: tweet.content)

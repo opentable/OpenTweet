@@ -27,7 +27,7 @@ struct TweetDetailView: View {
             HighlightTweetText(content: tweet.content)
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text(tweet.formattedDate())
+            Text(DateUtils.formatTimeAgo(from: tweet.date))
                 .font(.subheadline)
                 .frame(maxWidth: .infinity, alignment: .trailing)
         }
