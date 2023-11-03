@@ -27,7 +27,8 @@ class TimelineViewModelTests: XCTestCase {
     func testErrorState() {
         let dataService = MockTweetDataService(shouldSucceed: false, tweetToReturn: nil)
         let viewModel = TimelineViewModel(dataService: dataService)
-    
+        
+        XCTAssertEqual(viewModel.data, .loading)
         DispatchQueue.main.async {
             XCTAssertEqual(viewModel.data, .error)
         }

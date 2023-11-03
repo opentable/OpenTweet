@@ -8,20 +8,9 @@
 import XCTest
 
 final class TweetDataServiceTests: XCTestCase {
-    
-    var tweetDataService: TweetDataService!
-    var mockBundle: MockBundle!
-    
-    override func setUpWithError() throws {
-        mockBundle = MockBundle()
-        tweetDataService = TweetDataService(bundle: mockBundle)
-    }
-
-    override func tearDownWithError() throws {
-        tweetDataService = nil
-    }
-    
     func testLoadTweetsWithValidData() async {
+        let mockBundle = MockBundle()
+        let tweetDataService = TweetDataService(bundle: mockBundle)
         let jsonData = """
             {
                 "timeline": [
@@ -46,6 +35,8 @@ final class TweetDataServiceTests: XCTestCase {
     }
     
     func testLoadTweetsWithInvalidData() async {
+        let mockBundle = MockBundle()
+        let tweetDataService = TweetDataService(bundle: mockBundle)
         // id is missing
         let jsonData = """
             {
@@ -72,6 +63,8 @@ final class TweetDataServiceTests: XCTestCase {
     }
 
     func testLoadTweetsWithMissingData() async {
+        let mockBundle = MockBundle()
+        let tweetDataService = TweetDataService(bundle: mockBundle)
         // Simulate a case where the file is not found
         mockBundle.mockJSONData = nil
         do {
@@ -87,6 +80,8 @@ final class TweetDataServiceTests: XCTestCase {
     // MARK: Replies
     
     func testLoadTweetRepliesWithValidData() async {
+        let mockBundle = MockBundle()
+        let tweetDataService = TweetDataService(bundle: mockBundle)
         let jsonData = """
             {
                 "timeline": [
@@ -121,6 +116,8 @@ final class TweetDataServiceTests: XCTestCase {
     }
     
     func testLoadTweetRepliesWithInvalidData() async {
+        let mockBundle = MockBundle()
+        let tweetDataService = TweetDataService(bundle: mockBundle)
         let jsonData = """
             {
                 "timeline": [
@@ -156,6 +153,8 @@ final class TweetDataServiceTests: XCTestCase {
     // MARK: User
     
     func testLoadUserTweetsWithValidData() async {
+        let mockBundle = MockBundle()
+        let tweetDataService = TweetDataService(bundle: mockBundle)
         let jsonData = """
             {
                 "timeline": [
@@ -195,6 +194,8 @@ final class TweetDataServiceTests: XCTestCase {
     }
     
     func testLoadUserTweetsWithInvalidData() async {
+        let mockBundle = MockBundle()
+        let tweetDataService = TweetDataService(bundle: mockBundle)
         let jsonData = """
             {
                 "timeline": [

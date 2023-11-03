@@ -11,7 +11,6 @@
 		8F2AF7912AF424830083943D /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7902AF424830083943D /* TimelineView.swift */; };
 		8F2AF7932AF424850083943D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F2AF7922AF424850083943D /* Assets.xcassets */; };
 		8F2AF7972AF424850083943D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F2AF7962AF424850083943D /* Preview Assets.xcassets */; };
-		8F2AF7A12AF424850083943D /* OpenTweetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7A02AF424850083943D /* OpenTweetTests.swift */; };
 		8F2AF7AB2AF424850083943D /* OpenTweetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7AA2AF424850083943D /* OpenTweetUITests.swift */; };
 		8F2AF7AD2AF424850083943D /* OpenTweetUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7AC2AF424850083943D /* OpenTweetUITestsLaunchTests.swift */; };
 		8F2AF7C92AF425050083943D /* timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = 8F2AF7C82AF425050083943D /* timeline.json */; };
@@ -87,7 +86,6 @@
 		8F2AF7942AF424850083943D /* OpenTweet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenTweet.entitlements; sourceTree = "<group>"; };
 		8F2AF7962AF424850083943D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8F2AF79C2AF424850083943D /* OpenTweetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenTweetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F2AF7A02AF424850083943D /* OpenTweetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTweetTests.swift; sourceTree = "<group>"; };
 		8F2AF7A62AF424850083943D /* OpenTweetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenTweetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2AF7AA2AF424850083943D /* OpenTweetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTweetUITests.swift; sourceTree = "<group>"; };
 		8F2AF7AC2AF424850083943D /* OpenTweetUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTweetUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				8FC5D58B2AF561D100ADD5E9 /* ViewModel */,
-				8F2AF7A02AF424850083943D /* OpenTweetTests.swift */,
 				8F2AF7E32AF442D90083943D /* AttributedTweetStringMatchTests.swift */,
 				8F2AF7E62AF449A90083943D /* TweetDataServiceTests.swift */,
 				8F2AF8112AF55D6C0083943D /* MockTweetDataService.swift */,
@@ -476,7 +473,6 @@
 				8F2AF7E42AF442D90083943D /* AttributedTweetStringMatchTests.swift in Sources */,
 				8FC5D5952AF564D000ADD5E9 /* UserTweetsViewModelTests.swift in Sources */,
 				8F2AF7EA2AF44A020083943D /* TweetObject.swift in Sources */,
-				8F2AF7A12AF424850083943D /* OpenTweetTests.swift in Sources */,
 				8FC5D5922AF5646300ADD5E9 /* TweetRepliesViewModelTests.swift in Sources */,
 				8F2AF7ED2AF44B140083943D /* MockBundle.swift in Sources */,
 			);
