@@ -30,10 +30,7 @@ struct TweetDetailView: View {
                     case .loaded(let replies):
                     if !replies.isEmpty {
                         Divider()
-                        Text("Replies").font(.headline)
-                        ForEach(replies, id: \.id) {
-                            TweetCell(tweet: $0, tweetToNavigate: .constant(nil), userToNavigate: .constant(nil))
-                        }
+                        TweetReplyView(replies: replies)
                     }
                     case .error:
                         Text("Error")

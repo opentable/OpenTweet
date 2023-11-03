@@ -39,6 +39,7 @@
 		8F2AF7FC2AF52D520083943D /* UserTweetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7FB2AF52D520083943D /* UserTweetsView.swift */; };
 		8F2AF7FE2AF52D780083943D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7FD2AF52D780083943D /* User.swift */; };
 		8F2AF8002AF52EB90083943D /* UserTweetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7FF2AF52EB90083943D /* UserTweetsViewModel.swift */; };
+		8F2AF8022AF538220083943D /* TweetReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF8012AF538220083943D /* TweetReplyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		8F2AF7FB2AF52D520083943D /* UserTweetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTweetsView.swift; sourceTree = "<group>"; };
 		8F2AF7FD2AF52D780083943D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8F2AF7FF2AF52EB90083943D /* UserTweetsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTweetsViewModel.swift; sourceTree = "<group>"; };
+		8F2AF8012AF538220083943D /* TweetReplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetReplyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 				8F2AF7D62AF42A970083943D /* TweetCell.swift */,
 				8F2AF7F32AF455130083943D /* ProfilePicture.swift */,
 				8F2AF7FB2AF52D520083943D /* UserTweetsView.swift */,
+				8F2AF8012AF538220083943D /* TweetReplyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				8F2AF7D72AF42A970083943D /* TweetCell.swift in Sources */,
 				8F2AF7EC2AF44AE80083943D /* MockBundle.swift in Sources */,
 				8F2AF7E02AF42FD10083943D /* HighlightTweetText.swift in Sources */,
+				8F2AF8022AF538220083943D /* TweetReplyView.swift in Sources */,
 				8F2AF78F2AF424830083943D /* OpenTweetApp.swift in Sources */,
 				8F2AF7F42AF455130083943D /* ProfilePicture.swift in Sources */,
 				8F2AF7FC2AF52D520083943D /* UserTweetsView.swift in Sources */,
