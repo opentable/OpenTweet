@@ -22,7 +22,11 @@ enum DisplayConstants {
         static let textColor = Color.primary
     }
 
+    enum Images {
+        static let rightArrow: Image = Image(systemName: "arrowshape.turn.up.right.fill")
+        static let person: Image = Image(systemName: "person.circle")
+    }
+
     static let appTitle = "OpenTweet"
-    static let rightArrowName = "arrowshape.turn.up.right.fill"
     static let dateFormat = "MMMM d, yyyy 'at' h:mm a"
 }

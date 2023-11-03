@@ -248,9 +248,9 @@
 				8F2AF7DA2AF42B1F0083943D /* PreviewConstants.swift */,
 				8F2AF7DC2AF42BA90083943D /* DisplayConstants.swift */,
 				8F2AF7E12AF43BC70083943D /* AttributedTweetStringMatch.swift */,
+				8FC5D59A2AF575AC00ADD5E9 /* Strings.swift */,
 				8F2AF7EB2AF44AE80083943D /* MockBundle.swift */,
 				8F2AF80D2AF5568A0083943D /* ViewExtensions.swift */,
-				8FC5D59A2AF575AC00ADD5E9 /* Strings.swift */,
 				8FC5D59D2AF57BDA00ADD5E9 /* DateUtils.swift */,
 				8FC5D5A22AF5886000ADD5E9 /* DeepLink.swift */,
 			);

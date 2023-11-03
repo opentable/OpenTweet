@@ -33,7 +33,7 @@ struct TweetRepliesView: View {
             case .loaded(let replies):
                 if !replies.isEmpty {
                     HStack(spacing: DisplayConstants.Sizes.padding) {
-                        Image(systemName: DisplayConstants.rightArrowName)
+                        DisplayConstants.Images.rightArrow
                             .foregroundStyle(DisplayConstants.Colors.accentColor)
                         repliesList(replies: replies)
                     }

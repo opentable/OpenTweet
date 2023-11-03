@@ -14,23 +14,24 @@ struct ProfilePicture: View {
 
     var body: some View {
         HStack {
-            HStack {
-                switch image {
-                case .none:
-                    Rectangle()
-                        .fill(DisplayConstants.Colors.backgroundColor)
-                case .some(let image):
-                    Image(uiImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .clipped()
-                }
+            switch image {
+            case .none:
+                DisplayConstants.Images.person
+                    .resizable()
+                    .padding(DisplayConstants.Sizes.padding)
+                    .foregroundColor(DisplayConstants.Colors.accentColor)
+            case .some(let image):
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .clipped()
             }
-            .frame(width: size.width, height: size.height)
-            .background(DisplayConstants.Colors.backgroundColor)
-            .cornerRadius(DisplayConstants.Sizes.imageSize.width / 2)
-            .padding(0)
-        }.task {
+        }
+        .frame(width: size.width, height: size.height)
+        .background(DisplayConstants.Colors.backgroundColor)
+        .cornerRadius(DisplayConstants.Sizes.imageSize.width / 2)
+        .padding(0)
+        .task {
             if let avatar = user.avatar, let url = URL(string: avatar) {
                 let image = try? await ImageService.getImage(url: url)
                 await MainActor.run {
@@ -39,4 +40,8 @@ struct ProfilePicture: View {
             }
         }
     }
+}
+
+#Preview {
+    ProfilePicture(user: PreviewConstants.shortTweet.toUser())
 }
