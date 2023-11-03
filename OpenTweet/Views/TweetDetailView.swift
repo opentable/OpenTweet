@@ -11,30 +11,45 @@ struct TweetDetailView: View {
     @EnvironmentObject private var viewModel: TweetDetailViewModel
     let tweet: Tweet
 
+    func replyToView(replyTo: Tweet) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Replying to").font(.headline)
+            TweetCell(tweet: replyTo, tweetToNavigate: .constant(nil), userToNavigate: .constant(nil))
+        }
+        .padding(8)
+        .background(Color.gray.opacity(0.1))
+        .cornerRadius(8)
+        .padding(.top, 16)
+    }
+
+    var headerView: some View {
+        VStack(spacing: DisplayConstants.Sizes.padding) {
+            HighlightTweetText(content: tweet.content)
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Text(tweet.formattedDate())
+                .font(.subheadline)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: DisplayConstants.Sizes.padding) {
-                    HighlightTweetText(content: tweet.content)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(DisplayConstants.Sizes.padding)
-                        .font(.headline)
-                        .background(DisplayConstants.Colors.backgroundColor)
-                        .cornerRadius(DisplayConstants.Sizes.cornerRadius)
-                    Text(tweet.formattedDate()).font(.subheadline)
-                }
-                .cornerRadius(DisplayConstants.Sizes.cornerRadius)
-                switch viewModel.data {
+                    headerView
+                    switch viewModel.data {
                     case .loading:
                         ProgressView()
-                    case .loaded(let replies):
-                    if !replies.isEmpty {
-                        Divider()
-                        TweetReplyView(replies: replies)
-                    }
+                    case .loaded(let replyTo):
+                        if let replyTo = replyTo {
+                            replyToView(replyTo: replyTo)
+                        }
                     case .error:
                         Text("Error")
-                }
+                    }
+                }.cellStyling
+                TweetParentRepliesView().environmentObject(TweetRepliesViewModel(tweet: tweet))
             }
             .padding(DisplayConstants.Sizes.largePadding)
         }

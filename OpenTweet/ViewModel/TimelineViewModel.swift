@@ -8,7 +8,7 @@
 import Foundation
 
 class TimelineViewModel: ObservableObject {
-    enum State {
+    enum State: Equatable {
         case loading
         case loaded(tweets: [Tweet])
         case error
@@ -16,9 +16,9 @@ class TimelineViewModel: ObservableObject {
 
     @Published private(set) var data: State = .loading
 
-    var dataService: TweetDataService
+    var dataService: TweetDataServiceable
 
-    init(dataService: TweetDataService = TweetDataService.shared) {
+    init(dataService: TweetDataServiceable = TweetDataService.shared) {
         self.dataService = dataService
         Task {
             do {

@@ -7,31 +7,14 @@
 
 import Foundation
 
-class API {
-    enum Path {
-        case timeline
-        case user
-    }
-
-    enum APIError: Error, Equatable {
-        case fileNotFound
-        case decodingError(description: String)
-
-        static func == (lhs: Self, rhs: Self) -> Bool {
-            switch (lhs, rhs) {
-            case (.fileNotFound, .fileNotFound):
-                return true
-            case (.decodingError(_), .decodingError(_)):
-                // ignore description
-                return true
-            default:
-                return false
-            }
-        }
-    }
+protocol TweetDataServiceable {
+    func loadTweets() async throws -> [Tweet]
+    func loadUserTweets(userName: String) async throws -> [Tweet]
+    func loadTweetReplies(tweetId: String) async throws -> [Tweet]
+    func loadTweet(tweetId: String) async throws -> Tweet?
 }
 
-class TweetDataService {
+class TweetDataService: TweetDataServiceable {
     let bundle: Bundle
     static let shared: TweetDataService = TweetDataService()
 
@@ -62,6 +45,10 @@ class TweetDataService {
 
     func loadTweetReplies(tweetId: String) async throws -> [Tweet] {
         return try await loadTweets().filter { $0.inReplyTo == tweetId }
+    }
+
+    func loadTweet(tweetId: String) async throws -> Tweet? {
+        return try await loadTweets().first { $0.id == tweetId }
     }
 
     private func loadData(path: API.Path) async throws -> Data {

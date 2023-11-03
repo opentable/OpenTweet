@@ -1,25 +1,35 @@
 //
-//  TweetDetailViewModel.swift
+//  TweetThreadViewModel.swift
 //  OpenTweet
 //
-//  Created by Landon Rohatensky on 2023-11-02.
+//  Created by Landon Rohatensky on 2023-11-03.
 //
 
 import Foundation
 
-class TweetDetailViewModel: ObservableObject {
-    enum State {
+class TweetRepliesViewModel: ObservableObject {
+    enum State: Equatable {
         case loading
         case loaded(replies: [Tweet])
         case error
+        case maxDepth
     }
 
     @Published private(set) var data: State = .loading
 
-    var dataService: TweetDataService
+    var dataService: TweetDataServiceable
+    let tweet: Tweet
+    let depth: Int
+    private let maxDepth = 2
 
-    init(dataService: TweetDataService = TweetDataService.shared, tweet: Tweet) {
+    init(dataService: TweetDataServiceable = TweetDataService.shared, tweet: Tweet, depth: Int = 0) {
         self.dataService = dataService
+        self.tweet = tweet
+        self.depth = depth
+        guard depth < maxDepth else {
+            data = .maxDepth
+            return
+        }
         Task {
             do {
                 let tweets = try await dataService.loadTweetReplies(tweetId: tweet.id)

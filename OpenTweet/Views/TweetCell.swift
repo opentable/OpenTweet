@@ -29,9 +29,6 @@ struct TweetCell: View {
                 .truncationMode(.tail)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(DisplayConstants.Sizes.padding)
-        .background(DisplayConstants.Colors.backgroundColor)
-        .cornerRadius(DisplayConstants.Sizes.cornerRadius)
         .onTapGesture {
             print("Selected \(tweet.content)")
             tweetToNavigate = tweet

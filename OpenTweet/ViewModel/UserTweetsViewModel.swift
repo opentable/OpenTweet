@@ -8,7 +8,7 @@
 import Foundation
 
 class UserTweetsViewModel: ObservableObject {
-    enum State {
+    enum State: Equatable {
         case loading
         case loaded(tweets: [Tweet])
         case error
@@ -16,9 +16,9 @@ class UserTweetsViewModel: ObservableObject {
 
     @Published private(set) var data: State = .loading
     var user: User
-    var dataService: TweetDataService
+    var dataService: TweetDataServiceable
 
-    init(dataService: TweetDataService = TweetDataService.shared, user: User) {
+    init(dataService: TweetDataServiceable = TweetDataService.shared, user: User) {
         self.user = user
         self.dataService = dataService
         Task {

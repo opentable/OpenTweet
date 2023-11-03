@@ -23,4 +23,5 @@ enum DisplayConstants {
     }
 
     static let appTitle = "OpenTweet"
+    static let rightArrowName = "arrowshape.turn.up.right.fill"
 }

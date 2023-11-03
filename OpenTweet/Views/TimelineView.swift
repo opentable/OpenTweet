@@ -23,7 +23,7 @@ struct TimelineView: View {
                         ProgressView()
                     case .loaded(let tweets):
                         ForEach(tweets, id: \.id) { tweet in
-                            TweetCell(tweet: tweet, tweetToNavigate: $tweetToNavigate, userToNavigate: $userToNavigate)
+                            TweetCell(tweet: tweet, tweetToNavigate: $tweetToNavigate, userToNavigate: $userToNavigate).cellStyling
                         }
                     }
                 }
