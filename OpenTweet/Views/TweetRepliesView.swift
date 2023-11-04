@@ -35,10 +35,18 @@ struct TweetRepliesView: View {
                 ProgressView()
             case .loaded(let replies):
                 if !replies.isEmpty {
-                    HStack(alignment: .top, spacing: DisplayConstants.Sizes.padding) {
-                        DisplayConstants.Images.rightArrow
-                            .foregroundStyle(DisplayConstants.Colors.accentColor)
-                        repliesList(replies: replies)
+                    if viewModel.depth > 0 {
+                        HStack(alignment: .top, spacing: DisplayConstants.Sizes.padding) {
+                            DisplayConstants.Images.rightArrow
+                                .foregroundStyle(DisplayConstants.Colors.accentColor)
+                            repliesList(replies: replies)
+                        }
+                    } else {
+                        VStack(alignment: .leading, spacing: DisplayConstants.Sizes.padding) {
+                            Text(LocalizableStrings.replies.stringValue).font(.headline)
+                            repliesList(replies: replies)
+                        }
+                        
                     }
                 }
             case .error:

@@ -24,11 +24,27 @@
         }
       }
     },
-    "Followers" : {
-
+    "followers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Followers"
+          }
+        }
+      }
     },
-    "Following" : {
-
+    "following" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Following"
+          }
+        }
+      }
     },
     "hoursAgo" : {
       "extractionState" : "manual",
@@ -74,8 +90,16 @@
         }
       }
     },
-    "Posts" : {
-
+    "posts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Posts"
+          }
+        }
+      }
     },
     "replies" : {
       "extractionState" : "manual",

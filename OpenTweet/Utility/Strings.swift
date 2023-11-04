@@ -15,6 +15,9 @@ enum LocalizableStrings: String {
     case minutesAgo
     case hoursAgo
     case justNow
+    case posts
+    case followers
+    case following
 
     var stringValue: String {
         return NSLocalizedString(self.rawValue, comment: "")

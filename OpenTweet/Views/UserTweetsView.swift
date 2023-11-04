@@ -16,19 +16,18 @@ struct UserTweetsView: View {
         return HStack(spacing: DisplayConstants.Sizes.largePadding) {
             ProfilePicture(user: viewModel.user, size: DisplayConstants.Sizes.imageSizeLarge)
             VStack {
-                Text("Posts").font(.headline)
+                Text(LocalizableStrings.posts.stringValue).font(.headline)
                 Text("\(tweets.count)").font(.subheadline)
             }
             VStack {
-                Text("Followers").font(.headline)
+                Text(LocalizableStrings.following.stringValue).font(.headline)
                 Text("321").font(.subheadline)
             }
             VStack {
-                Text("Following").font(.headline)
+                Text(LocalizableStrings.followers.stringValue).font(.headline)
                 Text("100").font(.subheadline)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-        }
+        }.frame(maxWidth: .infinity, alignment: .leading)
     }
     
     var body: some View {
@@ -40,7 +39,7 @@ struct UserTweetsView: View {
                     ProgressView()
                 case .loaded(let tweets):
                     getHeaderView(tweets)
-                    Text("Posts").font(.title)
+                    Text(LocalizableStrings.posts.stringValue).font(.title)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     ForEach(tweets, id: \.id) { tweet in
                         TweetRepliesView(small: true)
