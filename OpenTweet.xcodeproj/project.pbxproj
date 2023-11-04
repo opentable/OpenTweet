@@ -59,6 +59,7 @@
 		8FC5D59B2AF575AC00ADD5E9 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D59A2AF575AC00ADD5E9 /* Strings.swift */; };
 		8FC5D59E2AF57BDA00ADD5E9 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D59D2AF57BDA00ADD5E9 /* DateUtils.swift */; };
 		8FC5D5A32AF5886000ADD5E9 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D5A22AF5886000ADD5E9 /* DeepLink.swift */; };
+		8FC5D5A52AF5AB7F00ADD5E9 /* iPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D5A42AF5AB7F00ADD5E9 /* iPadView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		8FC5D59D2AF57BDA00ADD5E9 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		8FC5D5A12AF5873500ADD5E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8FC5D5A22AF5886000ADD5E9 /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
+		8FC5D5A42AF5AB7F00ADD5E9 /* iPadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				8F2AF7CA2AF4250F0083943D /* LocalObjects */,
 				8F2AF7D52AF42A800083943D /* Views */,
 				8F2AF78E2AF424830083943D /* OpenTweetApp.swift */,
+				8FC5D5A42AF5AB7F00ADD5E9 /* iPadView.swift */,
 				8F2AF7922AF424850083943D /* Assets.xcassets */,
 				8F2AF7942AF424850083943D /* OpenTweet.entitlements */,
 				8F2AF7C82AF425050083943D /* timeline.json */,
@@ -433,6 +436,7 @@
 				8FC5D59B2AF575AC00ADD5E9 /* Strings.swift in Sources */,
 				8F2AF7D92AF42AB20083943D /* Tweet.swift in Sources */,
 				8F2AF8002AF52EB90083943D /* UserTweetsViewModel.swift in Sources */,
+				8FC5D5A52AF5AB7F00ADD5E9 /* iPadView.swift in Sources */,
 				8F2AF80C2AF550A10083943D /* TweetParentRepliesView.swift in Sources */,
 				8F2AF80E2AF5568A0083943D /* ViewExtensions.swift in Sources */,
 				8F2AF7D72AF42A970083943D /* TweetCell.swift in Sources */,

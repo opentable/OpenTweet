@@ -30,10 +30,6 @@ class TweetDataService: TweetDataServiceable {
         decoder.dateDecodingStrategy = .iso8601
         do {
             let timeline = try decoder.decode(Timeline.self, from: data)
-
-            print(timeline)
-
-            // convert to local object before returning
             return timeline.timeline.compactMap { $0.toTweet() }
         } catch {
             throw API.APIError.decodingError(description: error.localizedDescription)

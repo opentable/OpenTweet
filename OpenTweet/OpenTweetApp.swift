@@ -12,11 +12,7 @@ struct OpenTweetApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                TimelineView().environmentObject(
-                    TimelineViewModel()
-                )
-            }
+            BaseView()
         }
     }
 }

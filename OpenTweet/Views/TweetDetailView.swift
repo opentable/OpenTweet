@@ -61,7 +61,8 @@ struct TweetDetailView: View {
                 NavigationLink(value: viewModel.tweet.toUser()) {
                     HStack {
                         ProfilePicture(user: viewModel.tweet.toUser(), size: DisplayConstants.Sizes.imageSizeSmall)
-                        Text(viewModel.tweet.author).font(.subheadline)
+                        Text(viewModel.tweet.author)
+                            .font(.subheadline)
                     }
                 }.buttonStyle(.plain)
             }}

@@ -31,6 +31,7 @@ struct ProfilePicture: View {
         .background(DisplayConstants.Colors.backgroundColor)
         .cornerRadius(DisplayConstants.Sizes.imageSize.width / 2)
         .padding(0)
+        .accessibilityLabel(user.author)
         .task {
             if let avatar = user.avatar, let url = URL(string: avatar) {
                 let image = try? await ImageService.getImage(url: url)

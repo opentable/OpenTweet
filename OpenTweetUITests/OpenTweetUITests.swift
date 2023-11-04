@@ -22,12 +22,31 @@ final class OpenTweetUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testTweetDetails() throws {
         let app = XCUIApplication()
         app.launch()
+        let tweetCell = app.buttons.firstMatch
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssertTrue(tweetCell.exists)
+
+        tweetCell.tap()
+        
+        let detailsView = app.navigationBars["Man, I'm hungry. I probably should book a table at a restaurant or something. Wonder if there's an app for that?"]
+        XCTAssertTrue(detailsView.waitForExistence(timeout: 5))
+    }
+    
+    func testUserDetails() throws {
+        let app = XCUIApplication()
+        app.launch()
+        let tweetCell = app.buttons["@randomInternetStranger"].firstMatch
+
+        XCTAssertTrue(tweetCell.exists)
+
+        tweetCell.tap()
+
+        let detailsView = app.navigationBars["@randomInternetStranger"]
+
+        XCTAssertTrue(detailsView.waitForExistence(timeout: 5))
     }
 
     func testLaunchPerformance() throws {

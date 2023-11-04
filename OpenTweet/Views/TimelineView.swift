@@ -22,7 +22,9 @@ struct TimelineView: View {
                 case .loaded(let tweets):
                     ForEach(tweets, id: \.id) { tweet in
                         NavigationLink(value: tweet) {
-                            TweetCell(tweet: tweet).cellStyling
+                            TweetCell(tweet: tweet)
+                                .cellStyling
+
                         }.buttonStyle(.plain)
                     }
                 }
@@ -30,11 +32,7 @@ struct TimelineView: View {
             .padding(DisplayConstants.Sizes.largePadding)
             .navigationTitle(DisplayConstants.appTitle)
         }.navigationTitle(DisplayConstants.appTitle)
-            .navigationDestination(for: Tweet.self) { tweet in
-                TweetDetailView().environmentObject(TweetDetailViewModel(tweet: tweet))
-            }.navigationDestination(for: User.self) { user in
-                UserTweetsView().environmentObject(UserTweetsViewModel(user: user))
-            }.navigationDestination(item: $userToNavigate) { user in
+            .navigationDestination(item: $userToNavigate) { user in
                 UserTweetsView().environmentObject(UserTweetsViewModel(user: user))
             }.onOpenURL(perform: { url in
                 selectDeepLink(url)
