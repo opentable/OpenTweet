@@ -20,7 +20,7 @@ struct TweetParentRepliesView: View {
                 Text(LocalizableStrings.replies.stringValue).font(.headline)
                 VStack(alignment: .leading, spacing: DisplayConstants.Sizes.padding) {
                     ForEach(replies, id: \.id) {
-                        TweetRepliesView().environmentObject(
+                        TweetRepliesView(small: false).environmentObject(
                             TweetRepliesViewModel(
                                 tweet: $0,
                                 depth: viewModel.depth + 1)
@@ -37,6 +37,6 @@ struct TweetParentRepliesView: View {
 }
 
 #Preview {
-    TweetRepliesView().environmentObject(
+    TweetRepliesView(small: false).environmentObject(
         TweetRepliesViewModel(tweet: PreviewConstants.tweet, depth: 0))
 }

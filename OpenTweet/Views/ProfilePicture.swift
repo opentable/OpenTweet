@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfilePicture: View {
     var user: User
-    var size: CGSize = DisplayConstants.Sizes.imageSize
+    var size: CGSize = DisplayConstants.Sizes.imageSizeMedium
     @State private var image: UIImage?
 
     var body: some View {
@@ -29,7 +29,7 @@ struct ProfilePicture: View {
         }
         .frame(width: size.width, height: size.height)
         .background(DisplayConstants.Colors.backgroundColor)
-        .cornerRadius(DisplayConstants.Sizes.imageSize.width / 2)
+        .cornerRadius(size.width / 2)
         .padding(0)
         .accessibilityLabel(user.author)
         .task {

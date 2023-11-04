@@ -21,7 +21,7 @@ enum PreviewConstants {
         author: "@randomInternetStranger",
         content: "I'll check it out!",
         avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/PNG_Test.png/477px-PNG_Test.png?20231028084532",
-        date: .now - 1000,
+        date: .now.advanced(by: -36000),
         inReplyTo: "00001"
     )
     static let shortTweet: Tweet = Tweet(

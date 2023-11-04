@@ -22,7 +22,7 @@ class DateUtils {
             return String.localizedStringWithFormat(LocalizableStrings.hoursAgo.stringValue, hours)
         } else if let minutes = components.minute, minutes > 0 {
             return String.localizedStringWithFormat(LocalizableStrings.minutesAgo.stringValue, minutes)
-        } else if let seconds = components.second, seconds > 0 {
+        } else if let seconds = components.second, seconds >= 30 {
             return String.localizedStringWithFormat(LocalizableStrings.secondsAgo.stringValue, seconds)
         } else {
             return NSLocalizedString(LocalizableStrings.justNow.stringValue, comment: "")

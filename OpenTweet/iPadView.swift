@@ -16,7 +16,7 @@ struct BaseView: View {
                 TimelineView().environmentObject(
                     TimelineViewModel()
                 ).navigationDestination(for: Tweet.self) { tweet in
-                    TweetDetailView().environmentObject(TweetDetailViewModel(tweet: tweet))
+                    TweetDetailView(tweet: tweet)
                 }.navigationDestination(for: User.self) { user in
                     UserTweetsView().environmentObject(UserTweetsViewModel(user: user))
                 }
@@ -38,7 +38,7 @@ struct iPadView: View {
             TimelineView().environmentObject(
                 TimelineViewModel()
             ).navigationDestination(for: Tweet.self) { tweet in
-                TweetDetailView().environmentObject(TweetDetailViewModel(tweet: tweet))
+                TweetDetailView(tweet: tweet)
             }.navigationDestination(for: User.self) { user in
                 UserTweetsView().environmentObject(UserTweetsViewModel(user: user))
             }

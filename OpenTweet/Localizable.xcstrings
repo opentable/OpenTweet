@@ -4,6 +4,15 @@
     "" : {
 
     },
+    "%lld" : {
+
+    },
+    "100" : {
+
+    },
+    "321" : {
+
+    },
     "error" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -15,13 +24,19 @@
         }
       }
     },
+    "Followers" : {
+
+    },
+    "Following" : {
+
+    },
     "hoursAgo" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ hours ago"
+            "value" : "%d hours ago"
           }
         }
       }
@@ -54,10 +69,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ minutes ago"
+            "value" : "%d minutes ago"
           }
         }
       }
+    },
+    "Posts" : {
+
     },
     "replies" : {
       "extractionState" : "manual",
@@ -66,6 +84,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Replies"
+          }
+        }
+      }
+    },
+    "secondsAgo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d seconds ago"
           }
         }
       }

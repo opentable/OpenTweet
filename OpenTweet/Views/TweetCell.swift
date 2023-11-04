@@ -17,7 +17,9 @@ struct TweetCell: View {
                     ProfilePicture(user: tweet.toUser())
                 }
                 VStack(alignment: .leading) {
-                    Text(tweet.author).font(.subheadline)
+                    NavigationLink(value: tweet.toUser()) {
+                        Text(tweet.author).font(.subheadline).bold()
+                    }
                     Text(DateUtils.formatTimeAgo(from: tweet.date)).font(.subheadline)
                 }
             }

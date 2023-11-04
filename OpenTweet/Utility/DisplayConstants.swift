@@ -12,8 +12,9 @@ enum DisplayConstants {
         static let padding: CGFloat = 8
         static let largePadding: CGFloat = 16
         static let cornerRadius: CGFloat = 10
-        static let imageSize = CGSize(width: 48, height: 48)
+        static let imageSizeMedium = CGSize(width: 48, height: 48)
         static let imageSizeSmall = CGSize(width: 32, height: 32)
+        static let imageSizeLarge = CGSize(width: 96, height: 96)
     }
 
     enum Colors {

@@ -23,7 +23,7 @@ class UserTweetsViewModel: ObservableObject {
         self.dataService = dataService
         Task {
             do {
-                let tweets = try await dataService.loadUserTweets(userName: user.author)
+                let tweets = try await dataService.loadUserTweets(userName: user.author).sorted { $0.date > $1.date }
                 DispatchQueue.main.async {
                     self.data = State.loaded(tweets: tweets)
                 }

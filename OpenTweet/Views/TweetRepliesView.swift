@@ -9,11 +9,12 @@ import SwiftUI
 
 struct TweetRepliesView: View {
     @EnvironmentObject private var viewModel: TweetRepliesViewModel
+    let small: Bool
 
     func repliesList(replies: [Tweet]) -> some View {
         VStack {
             ForEach(replies, id: \.id) {
-                TweetRepliesView()
+                TweetRepliesView(small: false)
                     .environmentObject(TweetRepliesViewModel(tweet: $0, depth: viewModel.depth + 1))
                     .cellStyling
             }
@@ -23,16 +24,18 @@ struct TweetRepliesView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: DisplayConstants.Sizes.padding) {
             NavigationLink(value: viewModel.tweet) {
-                TweetCell(
-                    tweet: viewModel.tweet
-                )
+                if small {
+                    TweetCellSmall(tweet: viewModel.tweet)
+                } else {
+                    TweetCell(tweet: viewModel.tweet)
+                }
             }.buttonStyle(.plain)
             switch viewModel.data {
             case .loading:
                 ProgressView()
             case .loaded(let replies):
                 if !replies.isEmpty {
-                    HStack(spacing: DisplayConstants.Sizes.padding) {
+                    HStack(alignment: .top, spacing: DisplayConstants.Sizes.padding) {
                         DisplayConstants.Images.rightArrow
                             .foregroundStyle(DisplayConstants.Colors.accentColor)
                         repliesList(replies: replies)
@@ -48,6 +51,8 @@ struct TweetRepliesView: View {
 }
 
 #Preview {
-    TweetRepliesView()
-        .environmentObject(TweetRepliesViewModel(tweet: PreviewConstants.tweet, depth: 0))
+    NavigationStack {
+        TweetRepliesView(small: false)
+            .environmentObject(TweetRepliesViewModel(tweet: PreviewConstants.tweet, depth: 0))
+    }
 }

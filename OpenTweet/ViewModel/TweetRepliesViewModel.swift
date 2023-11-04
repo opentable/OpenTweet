@@ -32,7 +32,7 @@ class TweetRepliesViewModel: ObservableObject {
         }
         Task {
             do {
-                let tweets = try await dataService.loadTweetReplies(tweetId: tweet.id).sorted { $0.date < $1.date }
+                let tweets = try await dataService.loadTweetReplies(tweetId: tweet.id).sorted { $0.date > $1.date }
                 DispatchQueue.main.async {
                     self.data = State.loaded(replies: tweets)
                 }
