@@ -46,7 +46,7 @@ struct TweetRepliesView: View {
                             Text(LocalizableStrings.replies.stringValue).font(.headline)
                             repliesList(replies: replies)
                         }
-                        
+
                     }
                 }
             case .error:

@@ -29,7 +29,7 @@ struct UserTweetsView: View {
             }
         }.frame(maxWidth: .infinity, alignment: .leading)
     }
-    
+
     var body: some View {
         ScrollView {
             VStack {
