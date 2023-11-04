@@ -1,24 +1,29 @@
 OpenTweet
 =========
 
-## iPhone
-### Timeline
+# Screenshots
+### iPhone
+#### Timeline
 <img src="iphone1.png" width="300"><img src="iphone1Dark.png" width="300">
 
-### Tweet Detail
+#### Tweet Detail
 <img src="iphone2.png" width="300"><img src="iphone2Dark.png" width="300">
 
-### User
+#### User
 <img src="iphone3.png" width="300"><img src="iphone3Dark.png" width="300">
 
-## iPad
-### Timeline and Tweet Detail split
+### iPad
+#### Timeline and Tweet Detail split
 <img src="ipad1.png" width="300"><img src="ipad1Dark.png" width="300">
 
-### Timeline and User split
+#### Timeline and User split
 <img src="ipad2.png" width="300"><img src="ipad2Dark.png" width="300">
 
-# Instructions
+## UI Breakdown
+<img src="uibreakdown.png" width="600">
+<img src="uibreakdown2.png" width="600">
+
+### Instructions
 
     Hi! Welcome to your iOS coding excercise.
 
