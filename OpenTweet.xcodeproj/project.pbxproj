@@ -34,7 +34,7 @@
 		8F2AF7F42AF455130083943D /* ProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F32AF455130083943D /* ProfilePicture.swift */; };
 		8F2AF7F62AF455640083943D /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F52AF455640083943D /* ImageService.swift */; };
 		8F2AF7F82AF459DE0083943D /* TweetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F72AF459DE0083943D /* TweetDetailView.swift */; };
-		8F2AF7FA2AF45F090083943D /* TweetDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F92AF45F090083943D /* TweetDetailViewModel.swift */; };
+		8F2AF7FA2AF45F090083943D /* TweetReplyToViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F92AF45F090083943D /* TweetReplyToViewModel.swift */; };
 		8F2AF7FC2AF52D520083943D /* UserTweetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7FB2AF52D520083943D /* UserTweetsView.swift */; };
 		8F2AF7FE2AF52D780083943D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7FD2AF52D780083943D /* User.swift */; };
 		8F2AF8002AF52EB90083943D /* UserTweetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7FF2AF52EB90083943D /* UserTweetsViewModel.swift */; };
@@ -48,8 +48,8 @@
 		8F2AF8142AF55DFF0083943D /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7D32AF4282D0083943D /* TimelineViewModel.swift */; };
 		8F2AF8162AF55EDD0083943D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF8152AF55EDD0083943D /* API.swift */; };
 		8FC5D58A2AF55F2E00ADD5E9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF8152AF55EDD0083943D /* API.swift */; };
-		8FC5D58D2AF561E300ADD5E9 /* TweetDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D58C2AF561E300ADD5E9 /* TweetDetailViewModelTests.swift */; };
-		8FC5D58E2AF5622200ADD5E9 /* TweetDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F92AF45F090083943D /* TweetDetailViewModel.swift */; };
+		8FC5D58D2AF561E300ADD5E9 /* TweetReplyToViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D58C2AF561E300ADD5E9 /* TweetReplyToViewModelTests.swift */; };
+		8FC5D58E2AF5622200ADD5E9 /* TweetReplyToViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF7F92AF45F090083943D /* TweetReplyToViewModel.swift */; };
 		8FC5D5922AF5646300ADD5E9 /* TweetRepliesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D5912AF5646300ADD5E9 /* TweetRepliesViewModelTests.swift */; };
 		8FC5D5932AF5647100ADD5E9 /* TweetRepliesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AF8072AF540820083943D /* TweetRepliesViewModel.swift */; };
 		8FC5D5952AF564D000ADD5E9 /* UserTweetsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC5D5942AF564D000ADD5E9 /* UserTweetsViewModelTests.swift */; };
@@ -113,7 +113,7 @@
 		8F2AF7F32AF455130083943D /* ProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicture.swift; sourceTree = "<group>"; };
 		8F2AF7F52AF455640083943D /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		8F2AF7F72AF459DE0083943D /* TweetDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetDetailView.swift; sourceTree = "<group>"; };
-		8F2AF7F92AF45F090083943D /* TweetDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetDetailViewModel.swift; sourceTree = "<group>"; };
+		8F2AF7F92AF45F090083943D /* TweetReplyToViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetReplyToViewModel.swift; sourceTree = "<group>"; };
 		8F2AF7FB2AF52D520083943D /* UserTweetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTweetsView.swift; sourceTree = "<group>"; };
 		8F2AF7FD2AF52D780083943D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8F2AF7FF2AF52EB90083943D /* UserTweetsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTweetsViewModel.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 		8F2AF80F2AF55CC20083943D /* TimelineViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModelTests.swift; sourceTree = "<group>"; };
 		8F2AF8112AF55D6C0083943D /* MockTweetDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTweetDataService.swift; sourceTree = "<group>"; };
 		8F2AF8152AF55EDD0083943D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		8FC5D58C2AF561E300ADD5E9 /* TweetDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetDetailViewModelTests.swift; sourceTree = "<group>"; };
+		8FC5D58C2AF561E300ADD5E9 /* TweetReplyToViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetReplyToViewModelTests.swift; sourceTree = "<group>"; };
 		8FC5D5912AF5646300ADD5E9 /* TweetRepliesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRepliesViewModelTests.swift; sourceTree = "<group>"; };
 		8FC5D5942AF564D000ADD5E9 /* UserTweetsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTweetsViewModelTests.swift; sourceTree = "<group>"; };
 		8FC5D5982AF5751600ADD5E9 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				8F2AF80F2AF55CC20083943D /* TimelineViewModelTests.swift */,
-				8FC5D58C2AF561E300ADD5E9 /* TweetDetailViewModelTests.swift */,
+				8FC5D58C2AF561E300ADD5E9 /* TweetReplyToViewModelTests.swift */,
 				8FC5D5912AF5646300ADD5E9 /* TweetRepliesViewModelTests.swift */,
 				8FC5D5942AF564D000ADD5E9 /* UserTweetsViewModelTests.swift */,
 			);
@@ -288,7 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				8F2AF7D32AF4282D0083943D /* TimelineViewModel.swift */,
-				8F2AF7F92AF45F090083943D /* TweetDetailViewModel.swift */,
+				8F2AF7F92AF45F090083943D /* TweetReplyToViewModel.swift */,
 				8F2AF8072AF540820083943D /* TweetRepliesViewModel.swift */,
 				8F2AF7FF2AF52EB90083943D /* UserTweetsViewModel.swift */,
 			);
@@ -463,7 +463,7 @@
 				8F2AF7FC2AF52D520083943D /* UserTweetsView.swift in Sources */,
 				8F2AF7F82AF459DE0083943D /* TweetDetailView.swift in Sources */,
 				8F2AF7FE2AF52D780083943D /* User.swift in Sources */,
-				8F2AF7FA2AF45F090083943D /* TweetDetailViewModel.swift in Sources */,
+				8F2AF7FA2AF45F090083943D /* TweetReplyToViewModel.swift in Sources */,
 				8F2AF7D02AF426580083943D /* TweetObject.swift in Sources */,
 				8F2AF8162AF55EDD0083943D /* API.swift in Sources */,
 				8FC5D5AF2AF5DBF400ADD5E9 /* TweetReplyToView.swift in Sources */,
@@ -484,14 +484,14 @@
 				8F2AF7E82AF449CC0083943D /* TweetDataService.swift in Sources */,
 				8FC5D5932AF5647100ADD5E9 /* TweetRepliesViewModel.swift in Sources */,
 				8FC5D5962AF564F500ADD5E9 /* UserTweetsViewModel.swift in Sources */,
-				8FC5D58E2AF5622200ADD5E9 /* TweetDetailViewModel.swift in Sources */,
+				8FC5D58E2AF5622200ADD5E9 /* TweetReplyToViewModel.swift in Sources */,
 				8FC5D5972AF5653A00ADD5E9 /* User.swift in Sources */,
 				8F2AF7E72AF449A90083943D /* TweetDataServiceTests.swift in Sources */,
 				8F2AF8102AF55CC20083943D /* TimelineViewModelTests.swift in Sources */,
 				8FC5D5AB2AF5D57600ADD5E9 /* Strings.swift in Sources */,
 				8F2AF7E92AF449F50083943D /* Tweet.swift in Sources */,
 				8FC5D58A2AF55F2E00ADD5E9 /* API.swift in Sources */,
-				8FC5D58D2AF561E300ADD5E9 /* TweetDetailViewModelTests.swift in Sources */,
+				8FC5D58D2AF561E300ADD5E9 /* TweetReplyToViewModelTests.swift in Sources */,
 				8FC5D5AA2AF5D55E00ADD5E9 /* DeepLink.swift in Sources */,
 				8F2AF7E42AF442D90083943D /* AttributedTweetStringMatchTests.swift in Sources */,
 				8FC5D5952AF564D000ADD5E9 /* UserTweetsViewModelTests.swift in Sources */,

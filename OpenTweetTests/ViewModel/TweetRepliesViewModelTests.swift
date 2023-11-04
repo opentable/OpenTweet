@@ -34,7 +34,7 @@ class TweetRepliesViewModelTests: XCTestCase {
         
         let dataService = MockTweetDataService(shouldSucceed: false, tweetToReturn: nil)
         
-        let viewModel = TweetDetailViewModel(dataService: dataService, tweet: tweet)
+        let viewModel = TweetReplyToViewModel(dataService: dataService, tweet: tweet)
         
         DispatchQueue.main.async {
             if case .error(let description) = viewModel.data {

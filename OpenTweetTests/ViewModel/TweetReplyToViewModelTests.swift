@@ -1,5 +1,5 @@
 //
-//  TweetDetailViewModelTests.swift
+//  TweetReplyToViewModelTests.swift
 //  OpenTweetTests
 //
 //  Created by Landon Rohatensky on 2023-11-03.
@@ -7,11 +7,11 @@
 
 import XCTest
 
-class TweetDetailViewModelTests: XCTestCase {
+class TweetReplyToViewModelTests: XCTestCase {
 
     func testLoadingState() {
         let replyTweet = PreviewConstants.replyTweet
-        let viewModel = TweetDetailViewModel(dataService: MockTweetDataService(shouldSucceed: true, tweetToReturn: replyTweet), tweet: replyTweet)
+        let viewModel = TweetReplyToViewModel(dataService: MockTweetDataService(shouldSucceed: true, tweetToReturn: replyTweet), tweet: replyTweet)
         XCTAssertEqual(viewModel.data, .loading)
     }
     
@@ -19,7 +19,7 @@ class TweetDetailViewModelTests: XCTestCase {
         let tweet = PreviewConstants.tweet
         let replyTweet = PreviewConstants.replyTweet
         let dataService = MockTweetDataService(shouldSucceed: true, tweetToReturn: tweet)
-        let viewModel = TweetDetailViewModel(dataService: dataService, tweet: replyTweet)
+        let viewModel = TweetReplyToViewModel(dataService: dataService, tweet: replyTweet)
         
         XCTAssertEqual(viewModel.data, .loading)
         
@@ -34,7 +34,7 @@ class TweetDetailViewModelTests: XCTestCase {
         
         let dataService = MockTweetDataService(shouldSucceed: false, tweetToReturn: nil)
         
-        let viewModel = TweetDetailViewModel(dataService: dataService, tweet: tweet)
+        let viewModel = TweetReplyToViewModel(dataService: dataService, tweet: tweet)
         
         DispatchQueue.main.async {
             if case .error(let description) = viewModel.data {

@@ -1,5 +1,5 @@
 //
-//  TweetDetailViewModel.swift
+//  TweetReplyToViewModel.swift
 //  OpenTweet
 //
 //  Created by Landon Rohatensky on 2023-11-02.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TweetDetailViewModel: ObservableObject {
+class TweetReplyToViewModel: ObservableObject {
     enum State: Equatable {
         case loading
         case loaded(replyTo: Tweet?)

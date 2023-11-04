@@ -18,7 +18,7 @@ struct TweetCellSmall: View {
             Text(DateUtils.formatTimeAgo(from: tweet.date))
                 .font(.subheadline)
                 .frame(maxWidth: .infinity, alignment: .trailing)
-            TweetReplyToView().environmentObject(TweetDetailViewModel(tweet: tweet))
+            TweetReplyToView().environmentObject(TweetReplyToViewModel(tweet: tweet))
         }
     }
 }

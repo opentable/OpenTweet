@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TweetReplyToView: View {
-    @EnvironmentObject private var viewModel: TweetDetailViewModel
+    @EnvironmentObject private var viewModel: TweetReplyToViewModel
 
     var body: some View {
         switch viewModel.data {
