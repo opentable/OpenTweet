@@ -25,7 +25,8 @@ struct TimelineView: View {
                             TweetCell(tweet: tweet)
                                 .cellStyling
 
-                        }.buttonStyle(.plain)
+                        }.accessibilityIdentifier("TweetCell")
+                            .buttonStyle(.plain)
                     }
                 }
             }

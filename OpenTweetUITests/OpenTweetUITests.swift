@@ -25,7 +25,7 @@ final class OpenTweetUITests: XCTestCase {
     func testTweetDetails() throws {
         let app = XCUIApplication()
         app.launch()
-        let tweetCell = app.buttons.firstMatch
+        let tweetCell = app.buttons["TweetCell"].firstMatch
 
         XCTAssertTrue(tweetCell.exists)
 
