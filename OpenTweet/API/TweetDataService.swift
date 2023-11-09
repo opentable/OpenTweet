@@ -26,13 +26,19 @@ class TweetDataService: TweetDataServiceable {
     func loadTweets() async throws -> [Tweet] {
         let data = try await loadData(path: .timeline)
 
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        do {
-            let timeline = try decoder.decode(Timeline.self, from: data)
-            return timeline.timeline.compactMap { $0.toTweet() }
-        } catch {
-            throw API.APIError.decodingError(description: error.localizedDescription)
+        return try await withCheckedThrowingContinuation { continuation in
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            DispatchQueue.global(qos: .background).async {
+                do {
+                    let timeline = try decoder.decode(Timeline.self, from: data)
+                    DispatchQueue.main.async {
+                        continuation.resume(with: .success(timeline.timeline.compactMap { $0.toTweet() }))
+                    }
+                } catch {
+                    continuation.resume(throwing: API.APIError.decodingError(description: error.localizedDescription))
+                }
+            }
         }
     }
 
@@ -52,12 +58,20 @@ class TweetDataService: TweetDataServiceable {
         return try await loadTweets().first { $0.author == userName }?.toUser()
     }
 
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+
     private func loadData(path: API.Path) async throws -> Data {
         if let url = getURL(path: path) {
-            do {
-                return try Data(contentsOf: url)
-            } catch {
-                throw API.APIError.fileNotFound
+            return try await withCheckedThrowingContinuation { continuation in
+                getData(from: url) { data, _, _ in
+                    if let data = data {
+                        continuation.resume(returning: data)
+                        return
+                    }
+                    continuation.resume(throwing: API.APIError.fileNotFound)
+                }
             }
         }
         throw API.APIError.fileNotFound

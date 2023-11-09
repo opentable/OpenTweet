@@ -34,7 +34,7 @@ struct ProfilePicture: View {
         .accessibilityLabel(user.author)
         .task {
             if let avatar = user.avatar, let url = URL(string: avatar) {
-                let image = try? await ImageService.getImage(url: url)
+                let image = try? await ImageService.shared.getImage(url: url)
                 await MainActor.run {
                     self.image = image
                 }
