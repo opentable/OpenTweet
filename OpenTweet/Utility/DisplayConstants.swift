@@ -21,6 +21,7 @@ enum DisplayConstants {
         static let backgroundColor = Color.gray.opacity(0.2)
         static let accentColor = Color.accentColor
         static let textColor = Color.primary
+        static let dynamicTextColor = Color.dynamicColor(light: .black, dark: .white)
     }
 
     enum Images {
@@ -30,4 +31,22 @@ enum DisplayConstants {
 
     static let appTitle = "OpenTweet"
     static let dateFormat = "MMMM d, yyyy 'at' h:mm a"
+}
+
+extension Color {
+    var safeCGColor: CGColor {
+        UIColor(self).cgColor
+    }
+
+    public static func dynamicColor(
+        light: UIColor,
+        dark: UIColor) -> UIColor {
+
+        return UIColor {
+            switch $0.userInterfaceStyle {
+            case .dark: return dark
+            default: return light
+            }
+        }
+    }
 }
