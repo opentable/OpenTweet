@@ -1,0 +1,4 @@
+/* Key-Value based strings file holding English value for a specific key */
+
+"Timeline" = "Timeline";
+"Thread" = "Thread";

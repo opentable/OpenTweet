@@ -1,3 +1,38 @@
+# Contributor Notes
+
+I've used UIKit with xib and storyboard for this exercise as I wanted to iterate quickly. However, for a production application I recommend to build UI using the code instead.
+
+## Highlights
+
+1. The code has 95% coverage in testing,
+2. The code has both unit and UI tests with a total of 13 test cases,
+3. The app has been profiled using Instruments,
+4. The code doesn't use any third-party frameworks or external dependencies,
+5. The code has been generalized/abstracted for future extensibility,
+6. The code has been documented wherever needed,
+7. The string files have been localized by default to allow multiple languages support in future.
+
+## Architecture
+
+[Clean Swift](https://clean-swift.com/handbook/) is Uncle Bob’s Clean Architecture.
+
+In Clean Swift, the project structure is built around scenes. We have a set of components for each scene that will "work" for our controller. These are the components:
+- Models
+- Router
+- Worker
+- Interactor
+- Presenter
+
+When a new feature is implemented, these steps are followed:
+1. Trigger a use case from a method like viewDidLoad(),
+2. The view controller invokes the interactor to perform some business logic,
+3. The interactor utilizes the worker to perform core operations,
+4. The interactor invokes the presenter to format the result to some primitive types,
+5. The presenter invokes the view controller to display the results on the screen.
+
+### Contributor
+- [Tushar Agarwal](https://www.linkedin.com/in/tusharagarwal10)
+
 OpenTweet
 =========
 

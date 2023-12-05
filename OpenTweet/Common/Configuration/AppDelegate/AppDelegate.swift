@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let viewController = TweetsList.scene(withType: .timeline)
+        window?.rootViewController = UINavigationController(rootViewController: viewController)
+        
 		// Override point for customization after application launch.
 		return true
 	}
