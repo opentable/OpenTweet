@@ -9,7 +9,7 @@
 import Combine
 import UIKit
 
-class TimelineViewController: UITableViewController {
+final class TimelineViewController: UITableViewController {
     
     enum Section {
         case main
@@ -46,8 +46,20 @@ class TimelineViewController: UITableViewController {
     
     private func makeDataSource() -> DataSource {
         let ds = DataSource(
-            tableView: tableView) { tableView, indexPath, tweet in
+            tableView: tableView) { [weak self] tableView, indexPath, tweet in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "\(TimelineTableViewCell.self)", for: indexPath) as? TimelineTableViewCell
+                
+                // If the tweet instance has no image data, the ViewModel will try to retrieve the data
+                // and update the cell associated with that tweet once the data is fetched.
+                // This avoids reloading the whole table when there is an update on the data model(s).
+                Task {
+                    if tweet.avatarData == nil {
+                        if let _ = await self?.viewModel.retrieveAvatar(in: tweet) {
+                            self?.update(tweet: tweet, animatingDiff: true)
+                        }
+                    }
+                }
+
                 cell?.tweet = tweet
                 return cell
             }
@@ -60,6 +72,19 @@ class TimelineViewController: UITableViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(tweets, toSection: .main)
         
-        dataSource.apply(snapshot)
+        dataSource.apply(snapshot, animatingDifferences: animatingDiff)
+    }
+    
+    // Reconfigure/Reload the cell UI with the most updated data model
+    private func update(tweet: Tweet, animatingDiff: Bool = false) {
+        var snapshot = dataSource.snapshot()
+        
+        if #available(iOS 15.0, *) {
+            snapshot.reconfigureItems([tweet])
+        } else {
+            snapshot.reloadItems([tweet])
+        }
+        
+        dataSource.apply(snapshot, animatingDifferences: animatingDiff)
     }
 }

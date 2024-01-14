@@ -19,6 +19,7 @@
 		EA2E8E322B5440EC00620D98 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2E8E312B5440EC00620D98 /* TimelineViewModel.swift */; };
 		EA2E8E352B54442600620D98 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2E8E342B54442600620D98 /* TimelineTableViewCell.swift */; };
 		EA2E8E382B547B9800620D98 /* FormatDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2E8E372B547B9800620D98 /* FormatDateUtils.swift */; };
+		EA2E8E3A2B54834500620D98 /* Networks.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2E8E392B54834500620D98 /* Networks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		EA2E8E312B5440EC00620D98 /* TimelineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
 		EA2E8E342B54442600620D98 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 		EA2E8E372B547B9800620D98 /* FormatDateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDateUtils.swift; sourceTree = "<group>"; };
+		EA2E8E392B54834500620D98 /* Networks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				EA2E8E372B547B9800620D98 /* FormatDateUtils.swift */,
+				EA2E8E392B54834500620D98 /* Networks.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				EA2E8E302B543F5400620D98 /* Tweet.swift in Sources */,
 				EA2E8E322B5440EC00620D98 /* TimelineViewModel.swift in Sources */,
 				EA2E8E352B54442600620D98 /* TimelineTableViewCell.swift in Sources */,
+				EA2E8E3A2B54834500620D98 /* Networks.swift in Sources */,
 				009C4C6E1D9F0CD600F0BC6C /* TimelineViewController.swift in Sources */,
 				009C4C6C1D9F0CD600F0BC6C /* AppDelegate.swift in Sources */,
 			);

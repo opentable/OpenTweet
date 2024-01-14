@@ -12,12 +12,15 @@ import Foundation
 protocol TimelineViewModel {
     var tweetsPublisher: AnyPublisher<[Tweet], Never> { get }
     func fetchData()
+    func retrieveAvatar(in tweet: Tweet) async -> Data?
 }
 
 final class TimelineViewModelImpl: TimelineViewModel {
     
     lazy var tweetsPublisher: AnyPublisher<[Tweet], Never> = $tweets.eraseToAnyPublisher()
     @Published private var tweets: [Tweet] = []
+    
+    private lazy var networks = Networks()
     
     func fetchData() {
         guard let filePath = Bundle.main.url(forResource: "timeline", withExtension: "json") else {
@@ -33,5 +36,18 @@ final class TimelineViewModelImpl: TimelineViewModel {
         } catch {
             print("Error decoding the data: \(error)")
         }
+    }
+    
+    func retrieveAvatar(in tweet: Tweet) async -> Data? {
+        guard let avatarLink = tweet.avatarLink else { return nil }
+        
+        if let url = URL(string: avatarLink) {
+            let data = await networks.download(url: url)
+            
+            tweet.avatarData = data
+            return data
+        }
+        
+        return nil
     }
 }

@@ -12,7 +12,7 @@ struct Timeline: Codable {
     let timeline: [Tweet]
 }
 
-struct Tweet: Codable, Hashable {
+class Tweet: Codable, Hashable {
     
     let id: String
     let author: String
@@ -20,6 +20,7 @@ struct Tweet: Codable, Hashable {
     let avatarLink: String?
     let dateString: String
     let replyTo: String?
+    var avatarData: Data?
     
     enum CodingKeys: String, CodingKey {
         case id

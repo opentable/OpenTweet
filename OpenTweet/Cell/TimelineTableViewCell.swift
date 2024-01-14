@@ -15,6 +15,9 @@ final class TimelineTableViewCell: UITableViewCell {
             nameLabel.text = tweet?.author
             timeLabel.text = tweet?.formattedDateString
             contentLabel.text = tweet?.content
+            if let avatarData = tweet?.avatarData {
+                avatarImageView.image = UIImage(data: avatarData)
+            }
         }
     }
 
