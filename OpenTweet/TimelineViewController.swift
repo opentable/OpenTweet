@@ -10,11 +10,15 @@ import UIKit
 
 class TimelineViewController: UITableViewController {
 
+    private lazy var viewModel: TimelineViewModel = TimelineViewModelImpl()
+    
+    // MARK: - View Lifecycle
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
         title = "Open Tweet"
-		// Do any additional setup after loading the view, typically from a nib.
+        viewModel.fetchData()
 	}
 
 }
