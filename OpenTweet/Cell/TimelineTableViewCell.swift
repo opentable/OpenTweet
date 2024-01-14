@@ -13,7 +13,7 @@ final class TimelineTableViewCell: UITableViewCell {
     var tweet: Tweet? {
         didSet {
             nameLabel.text = tweet?.author
-            timeLabel.text = tweet?.dateString
+            timeLabel.text = tweet?.formattedDateString
             contentLabel.text = tweet?.content
         }
     }
@@ -95,5 +95,12 @@ final class TimelineTableViewCell: UITableViewCell {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
+    }
+}
+
+extension Tweet {
+    
+    var formattedDateString: String? {
+        FormatDateUtils.format(rawDateString: dateString)
     }
 }
