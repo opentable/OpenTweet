@@ -6,17 +6,18 @@
 //  Copyright © 2024 OpenTable, Inc. All rights reserved.
 //
 
+import Combine
 import Foundation
 
 protocol TimelineViewModel {
+    var tweetsPublisher: AnyPublisher<[Tweet], Never> { get }
     func fetchData()
-    
-    var tweets: [Tweet] { get }
 }
 
 final class TimelineViewModelImpl: TimelineViewModel {
     
-    private(set) var tweets: [Tweet] = []
+    lazy var tweetsPublisher: AnyPublisher<[Tweet], Never> = $tweets.eraseToAnyPublisher()
+    @Published private var tweets: [Tweet] = []
     
     func fetchData() {
         guard let filePath = Bundle.main.url(forResource: "timeline", withExtension: "json") else {

@@ -17,6 +17,7 @@
 		009C4C9B1D9F0D4100F0BC6C /* timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = 009C4C9A1D9F0D4100F0BC6C /* timeline.json */; };
 		EA2E8E302B543F5400620D98 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2E8E2F2B543F5400620D98 /* Tweet.swift */; };
 		EA2E8E322B5440EC00620D98 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2E8E312B5440EC00620D98 /* TimelineViewModel.swift */; };
+		EA2E8E352B54442600620D98 /* TimelineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2E8E342B54442600620D98 /* TimelineTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		009C4C9D1D9F104800F0BC6C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		EA2E8E2F2B543F5400620D98 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		EA2E8E312B5440EC00620D98 /* TimelineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
+		EA2E8E342B54442600620D98 /* TimelineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		009C4C6A1D9F0CD600F0BC6C /* OpenTweet */ = {
 			isa = PBXGroup;
 			children = (
+				EA2E8E332B54440A00620D98 /* Cell */,
 				EA2E8E2E2B543F2300620D98 /* Models */,
 				009C4C6B1D9F0CD600F0BC6C /* AppDelegate.swift */,
 				009C4C6D1D9F0CD600F0BC6C /* TimelineViewController.swift */,
@@ -150,6 +153,14 @@
 				EA2E8E312B5440EC00620D98 /* TimelineViewModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EA2E8E332B54440A00620D98 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EA2E8E342B54442600620D98 /* TimelineTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +303,7 @@
 			files = (
 				EA2E8E302B543F5400620D98 /* Tweet.swift in Sources */,
 				EA2E8E322B5440EC00620D98 /* TimelineViewModel.swift in Sources */,
+				EA2E8E352B54442600620D98 /* TimelineTableViewCell.swift in Sources */,
 				009C4C6E1D9F0CD600F0BC6C /* TimelineViewController.swift in Sources */,
 				009C4C6C1D9F0CD600F0BC6C /* AppDelegate.swift in Sources */,
 			);
