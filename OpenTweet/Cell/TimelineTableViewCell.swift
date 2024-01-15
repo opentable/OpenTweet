@@ -14,7 +14,7 @@ final class TimelineTableViewCell: UITableViewCell {
         didSet {
             nameLabel.text = tweet?.author
             timeLabel.text = tweet?.formattedDateString
-            contentLabel.text = tweet?.content
+            contentLabel.highlightLink(in: tweet?.content)
             if let avatarData = tweet?.avatarData {
                 avatarImageView.image = UIImage(data: avatarData)
             }
@@ -98,6 +98,52 @@ final class TimelineTableViewCell: UITableViewCell {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
+    }
+}
+
+extension UILabel {
+    
+    func highlightLink(in text: String?) {
+        guard let text = text else { return }
+        
+        // Detects links in the text
+        let detector = try! NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+        let matches = detector.matches(
+            in: text,
+            options: [],
+            range: NSRange(location: 0, length: text.utf16.count)
+        )
+        
+        if matches.isEmpty {
+            self.text = text
+            return
+        }
+
+        // Sets up attributed string with links
+        let attributedString = NSMutableAttributedString(string: text)
+        for match in matches {
+            guard let url = match.url else { continue }
+            let range = match.range
+            attributedString.addAttribute(
+                .link,
+                value: url,
+                range: range
+            )
+           
+            attributedString.addAttribute(
+                .foregroundColor,
+                value: UIColor.blue, 
+                range: range
+            )
+            
+            attributedString.addAttribute(
+                .underlineStyle,
+                value: NSUnderlineStyle.single.rawValue,
+                range: match.range
+            )
+        }
+        
+        self.attributedText = attributedString
     }
 }
 
