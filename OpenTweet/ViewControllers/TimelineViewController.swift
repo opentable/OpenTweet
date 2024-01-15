@@ -32,6 +32,9 @@ final class TimelineViewController: UITableViewController {
         title = "Open Tweet"
         tableView.register(TimelineTableViewCell.self, forCellReuseIdentifier: "\(TimelineTableViewCell.self)")
         
+        let contextMenuInteraction = UIContextMenuInteraction(delegate: self)
+        tableView.addInteraction(contextMenuInteraction)
+        
         viewModel.tweetsPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] tweets in
@@ -86,5 +89,48 @@ final class TimelineViewController: UITableViewController {
         }
         
         dataSource.apply(snapshot, animatingDifferences: animatingDiff)
+    }
+    
+    private func getTweet(at indexPath: IndexPath) -> Tweet {
+        let tweets = dataSource.snapshot().itemIdentifiers(inSection: .main)
+       
+        return tweets[indexPath.row]
+    }
+    
+    // MARK: - TableView Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let tweet = getTweet(at: indexPath)
+        
+        let previewViewController = TweetViewController(tweet: tweet)
+        navigationController?.pushViewController(previewViewController, animated: true)
+    }
+}
+
+extension TimelineViewController: UIContextMenuInteractionDelegate {
+
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        guard let indexPath = tableView.indexPathForRow(at: location) else {
+            return nil
+        }
+
+        let tweet = getTweet(at: indexPath)
+        
+        // Creates a preview view controller to show a tweet in details
+        let previewViewController = TweetViewController(tweet: tweet)
+        
+        return UIContextMenuConfiguration(identifier: indexPath as NSCopying, previewProvider: {
+            
+            // Shows the preview view controller when long pressing the cell
+            return previewViewController
+        }) { _ in
+            
+            // Defines menu items or actions related to the cell
+            let visitAction = UIAction(title: "View \(tweet.author)'s tweet", image: nil) { [weak self] _ in
+                self?.navigationController?.pushViewController(previewViewController, animated: true)
+            }
+
+            return UIMenu(title: "Actions", children: [visitAction])
+        }
     }
 }
