@@ -34,7 +34,7 @@ struct FormatDateUtils {
 
 extension String {
     
-    /// Coverts the string to a `Date` if it is in ISO 8601 format
+    // Coverts the string to a `Date` if it is in ISO 8601 format
     var iso8601Date: Date? {
         let isoFormatter = ISO8601DateFormatter()
         

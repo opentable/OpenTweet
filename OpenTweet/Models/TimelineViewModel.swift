@@ -20,8 +20,8 @@ final class TimelineViewModelImpl: TimelineViewModel {
     lazy var tweetsPublisher: AnyPublisher<[Tweet], Never> = $tweets.eraseToAnyPublisher()
     @Published private var tweets: [Tweet] = []
     
-    private var tweetsMap: [String: Tweet] = [:]    // [Tweet.ID: Tweet]
-    private var tweetRepliesMap: [String: [String]] = [:]   // [Tweet.ID: [Tweet]]
+    private var tweetsMap: [String: Tweet] = [:]    // [Tweet.id: Tweet]
+    private var tweetRepliesMap: [String: [String]] = [:]   // [Tweet.id: [Tweet.id]]
 
     private lazy var networks = Networks()
     
@@ -41,7 +41,7 @@ final class TimelineViewModelImpl: TimelineViewModel {
             
             tweets.forEach { tweet in
                 if let replyTo = tweet.replyTo {
-                    // Fetches the tweet that the input tweet replies to.
+                    // Fetches the tweet that the input tweet replies to
                     tweet.tweetReplyTo = tweetsMap[replyTo]
                     
                     // Maps the reply IDs to each tweet
@@ -71,7 +71,7 @@ final class TimelineViewModelImpl: TimelineViewModel {
         return nil
     }
         
-    // Returns the replies to the input tweet.
+    // Returns the replies to the input tweet
     private func fetchTweetReplies(on tweetID: String) -> [Tweet] {
         guard let directReplyIDs = tweetRepliesMap[tweetID] else { return [] }
         

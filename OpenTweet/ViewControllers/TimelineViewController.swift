@@ -96,6 +96,9 @@ final class TimelineViewController: UITableViewController {
        
         return tweets[indexPath.row]
     }
+}
+
+extension TimelineViewController {
     
     // MARK: - TableView Delegate
     

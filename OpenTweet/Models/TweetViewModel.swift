@@ -18,15 +18,15 @@ protocol TweetViewModel {
 final class TweetviewModelImpl: TweetViewModel{
     
     var mainTweet: Tweet {
-        self.tweet
+        tweet
     }
     
     var replyToTweet: Tweet? {
-        self.tweet.tweetReplyTo
+        tweet.tweetReplyTo
     }
     
     var replies: [Tweet] {
-        self.tweet.replies
+        tweet.replies
     }
     
     private let tweet: Tweet
