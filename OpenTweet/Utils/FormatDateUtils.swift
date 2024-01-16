@@ -13,12 +13,10 @@ struct FormatDateUtils {
     /// Returns the date string based on a time point whose foramt is ISO 8601.
     ///
     /// - Parameters
-    ///     - rawDateString: The ISO 8601 format string input that represents a specifi time point.
+    ///     - rawDateString: The ISO 8601 format string input that represents a specific time point.
     /// - Returns: A date string in MMMM dd, yyyy HH:mm:ss format.
     static func format(rawDateString: String) -> String? {
-        let isoFormatter = ISO8601DateFormatter()
-        
-        if let date = isoFormatter.date(from: rawDateString) {
+        if let date = rawDateString.iso8601Date {
             
             // Create a date formatter for the desired output format
             let outputFormatter = DateFormatter()
@@ -31,5 +29,15 @@ struct FormatDateUtils {
         }
         
         return nil
+    }
+}
+
+extension String {
+    
+    /// Coverts the string to a `Date` if it is in ISO 8601 format
+    var iso8601Date: Date? {
+        let isoFormatter = ISO8601DateFormatter()
+        
+        return isoFormatter.date(from: self)
     }
 }

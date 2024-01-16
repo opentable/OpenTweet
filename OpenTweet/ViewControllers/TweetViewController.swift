@@ -12,6 +12,8 @@ final class TweetViewController: UITableViewController {
     
     enum Section {
         case main
+        case replyTo
+        case replies
     }
     
     typealias DataSource = UITableViewDiffableDataSource<Section, Tweet>
@@ -36,6 +38,8 @@ final class TweetViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = .label
+        
         tableView.register(TimelineTableViewCell.self, forCellReuseIdentifier: "\(TimelineTableViewCell.self)")
         
         applySnapshot(tweets: [viewModel.mainTweet])
@@ -60,6 +64,54 @@ final class TweetViewController: UITableViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(tweets, toSection: .main)
         
+        if let replyToTweet = viewModel.replyToTweet {
+            snapshot.appendSections([.replyTo])
+            snapshot.appendItems([replyToTweet], toSection: .replyTo)
+        }
+        
+        if viewModel.replies.count > 0 {
+            snapshot.appendSections([.replies])
+            snapshot.appendItems(viewModel.replies, toSection: .replies)
+        }
+        
         dataSource.apply(snapshot, animatingDifferences: animatingDiff)
+    }
+    
+    // MARK: - TableView Delegate
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let snapshot = dataSource.snapshot()
+        let sections = snapshot.sectionIdentifiers
+        
+        return makeHeaderView(for: sections[section])
+    }
+    
+    private func makeHeaderView(for section: Section) -> UIView? {
+        if section == .main { return nil }
+        
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.lightGray
+
+        let titleLabel = UILabel()
+        titleLabel.textColor = UIColor.black
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 10)
+        headerView.addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 5),
+            titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
+        ])
+        
+        switch section {
+        case .main:
+            break
+        case .replyTo:
+            titleLabel.text = "Repling to:"
+        case .replies:
+            titleLabel.text = "Replies:"
+        }
+        
+        return headerView
     }
 }

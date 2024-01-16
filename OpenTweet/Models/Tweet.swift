@@ -21,6 +21,8 @@ class Tweet: Codable, Hashable {
     let dateString: String
     let replyTo: String?
     var avatarData: Data?
+    var tweetReplyTo: Tweet?
+    var replies: [Tweet] = []
     
     enum CodingKeys: String, CodingKey {
         case id

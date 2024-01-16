@@ -20,6 +20,9 @@ final class TimelineViewModelImpl: TimelineViewModel {
     lazy var tweetsPublisher: AnyPublisher<[Tweet], Never> = $tweets.eraseToAnyPublisher()
     @Published private var tweets: [Tweet] = []
     
+    private var tweetsMap: [String: Tweet] = [:]    // [Tweet.ID: Tweet]
+    private var tweetRepliesMap: [String: [String]] = [:]   // [Tweet.ID: [Tweet]]
+
     private lazy var networks = Networks()
     
     func fetchData() {
@@ -30,9 +33,26 @@ final class TimelineViewModelImpl: TimelineViewModel {
         do {
             let data = try Data(contentsOf: filePath)
             let decoded = try JSONDecoder().decode(Timeline.self, from: data)
-            tweets = decoded.timeline
+            tweets = decoded.timeline.sorted(by: {  $0.dateString.iso8601Date ?? Date() < $1.dateString.iso8601Date ?? Date() })
             
             //print("Decoded the data: \(tweets)")
+            
+            tweetsMap = Dictionary(uniqueKeysWithValues: tweets.map { ($0.id, $0) })
+            
+            tweets.forEach { tweet in
+                if let replyTo = tweet.replyTo {
+                    // Fetches the tweet that the input tweet replies to.
+                    tweet.tweetReplyTo = tweetsMap[replyTo]
+                    
+                    // Maps the reply IDs to each tweet
+                    tweetRepliesMap[replyTo, default: []].append(tweet.id)
+                }
+            }
+            
+            tweets.forEach { tweet in
+                tweet.replies = fetchTweetReplies(on: tweet.id)
+            }
+            
         } catch {
             print("Error decoding the data: \(error)")
         }
@@ -49,5 +69,13 @@ final class TimelineViewModelImpl: TimelineViewModel {
         }
         
         return nil
+    }
+        
+    // Returns the replies to the input tweet.
+    private func fetchTweetReplies(on tweetID: String) -> [Tweet] {
+        guard let directReplyIDs = tweetRepliesMap[tweetID] else { return [] }
+        
+        let replies = directReplyIDs.compactMap { tweetsMap[$0] }
+        return replies.sorted(by: {  $0.dateString.iso8601Date ?? Date() < $1.dateString.iso8601Date ?? Date() })
     }
 }
