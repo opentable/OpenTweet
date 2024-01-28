@@ -1,3 +1,15 @@
+OpenTweet Demo
+=========
+iPhone 13 Demo
+|Light Mode|Dark Mode|
+|---|---|
+|https://github.com/seanlee20/OpenTweet/assets/47151519/bd153dda-c9f5-4646-aaae-ddba6674e907|https://github.com/seanlee20/OpenTweet/assets/47151519/03725441-daa3-48bc-838e-25bbf051dc14|
+
+iPad Pro Demo
+|Light Mode|Dark Mode|
+|---|---|
+|https://github.com/seanlee20/OpenTweet/assets/47151519/169b5098-8f69-4c9f-9e12-28228ef84a96|https://github.com/seanlee20/OpenTweet/assets/47151519/9db8e78f-335c-4fc8-88c8-7b88909c0eed|
+
 OpenTweet
 =========
 
