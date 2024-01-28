@@ -74,29 +74,6 @@ extension UIView {
         layer.masksToBounds = true
     }
     
-//    /// Helper method to round a specific set of corners to your view (Example: Round the top left and top right corner, but not the bottom corners)
-//    /// - Parameters:
-//    ///   - corners: A `UIRectCorner` instance
-//    ///   - radius: The radius to round the corners
-//    func makeRoundedCorners(_ corners: UIRectCorner, radius: CGFloat) {
-//        let mask = CAShapeLayer()
-//        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius)).cgPath
-//        mask.path = path
-//        layer.mask = mask
-//    }
-//    
-//    /// Makes a view circular. This method assumes the view is fully laid out and is at the intended width. If the view's `width` is dynamic, you
-//    /// will need to either call this method in `layoutSubviews` or calculate the width ahead of time and use `func makeRoundedCornerOfRadius(radius: CGFloat)` instead
-//    func makeCircular() {
-//        makeRoundedCornerOfRadius(radius: width / 2)
-//    }
-//    
-//    /// Makes a view edge circular. This method assumes the view is fully laid out and is at the intended width. If the view's `height` is dynamic, you
-//    /// will need to either call this method in `layoutSubviews` or calculate the height ahead of time and use `func makeRoundedCornerOfRadius(radius: CGFloat)` instead
-//    func makeRoundedEdges() {
-//        makeRoundedCornerOfRadius(radius: height / 2)
-//    }
-    
     /// Returns a list of constraints that will pin the receiver to the passed in `view` or - if unspecified -  its `superview`
     /// - Parameters:
     ///   - view: The view to pin
