@@ -24,8 +24,6 @@ final class TweetReplyView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "arrowshape.turn.up.left.fill")
-//        imageView.image?.withTintColor(.white)
-//        imageView.tintColor = Constants.Colors.dynamicTextColor
         imageView.isHidden = true
         return imageView
     }()
