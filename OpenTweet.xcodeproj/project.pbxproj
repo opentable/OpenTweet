@@ -36,6 +36,8 @@
 		FC08D1A22B65C6E5000589FC /* TweetReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08D1A12B65C6E5000589FC /* TweetReplyView.swift */; };
 		FC08D1A42B65C881000589FC /* TweetReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08D1A32B65C881000589FC /* TweetReplyCell.swift */; };
 		FC08D1A62B66C2F2000589FC /* TweetReplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08D1A52B66C2F2000589FC /* TweetReplyViewModel.swift */; };
+		FC08D1A82B66EF43000589FC /* TimelineViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08D1A72B66EF43000589FC /* TimelineViewModelTests.swift */; };
+		FC08D1AA2B66F1C8000589FC /* UIImageViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08D1A92B66F1C8000589FC /* UIImageViewExtensionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		FC08D1A12B65C6E5000589FC /* TweetReplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetReplyView.swift; sourceTree = "<group>"; };
 		FC08D1A32B65C881000589FC /* TweetReplyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetReplyCell.swift; sourceTree = "<group>"; };
 		FC08D1A52B66C2F2000589FC /* TweetReplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetReplyViewModel.swift; sourceTree = "<group>"; };
+		FC08D1A72B66EF43000589FC /* TimelineViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModelTests.swift; sourceTree = "<group>"; };
+		FC08D1A92B66F1C8000589FC /* UIImageViewExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,8 @@
 				009C4C801D9F0CD600F0BC6C /* OpenTweetTests.swift */,
 				009C4C821D9F0CD600F0BC6C /* Info.plist */,
 				FC08D18C2B64A074000589FC /* DateUtilTests.swift */,
+				FC08D1A72B66EF43000589FC /* TimelineViewModelTests.swift */,
+				FC08D1A92B66F1C8000589FC /* UIImageViewExtensionTests.swift */,
 			);
 			path = OpenTweetTests;
 			sourceTree = "<group>";
@@ -416,7 +422,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC08D1A82B66EF43000589FC /* TimelineViewModelTests.swift in Sources */,
 				009C4C811D9F0CD600F0BC6C /* OpenTweetTests.swift in Sources */,
+				FC08D1AA2B66F1C8000589FC /* UIImageViewExtensionTests.swift in Sources */,
 				FC08D18D2B64A074000589FC /* DateUtilTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

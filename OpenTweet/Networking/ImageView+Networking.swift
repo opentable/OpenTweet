@@ -18,25 +18,28 @@ extension UIImageView {
     /// - Returns: A reference to the data task in order to pause, cancel, resume, etc.
     @discardableResult
     func loadImageFromURL(urlString: String,
-                          placeholder: UIImage? = nil) -> URLSessionDataTask? {
+                          placeholder: UIImage? = nil,
+                          urlSession: URLSession = URLSession.shared,
+                          completionBlock: (() -> Void)? = nil) -> URLSessionDataTask? {
         self.image = nil
         let key = NSString(string: urlString)
         if let cachedImage = imageCache.object(forKey: key) {
             self.image = cachedImage
             return nil
         }
-        guard let url = URL(string: urlString) else {
-            return nil
-        }
         if let placeholder = placeholder {
             self.image = placeholder
         }
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+        guard let url = URL(string: urlString) else {
+            return nil
+        }
+        let task = urlSession.dataTask(with: url) { data, _, _ in
             DispatchQueue.main.async {
                 if let data = data,
                    let downloadedImage = UIImage(data: data) {
                     imageCache.setObject(downloadedImage, forKey: NSString(string: urlString))
                     self.image = downloadedImage
+                    completionBlock?()
                 }
                 
             }
