@@ -38,6 +38,7 @@
 		FC08D1A62B66C2F2000589FC /* TweetReplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08D1A52B66C2F2000589FC /* TweetReplyViewModel.swift */; };
 		FC08D1A82B66EF43000589FC /* TimelineViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08D1A72B66EF43000589FC /* TimelineViewModelTests.swift */; };
 		FC08D1AA2B66F1C8000589FC /* UIImageViewExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08D1A92B66F1C8000589FC /* UIImageViewExtensionTests.swift */; };
+		FC08D1AC2B6704C3000589FC /* AttributedStringBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC08D1AB2B6704C3000589FC /* AttributedStringBuilderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		FC08D1A52B66C2F2000589FC /* TweetReplyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetReplyViewModel.swift; sourceTree = "<group>"; };
 		FC08D1A72B66EF43000589FC /* TimelineViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModelTests.swift; sourceTree = "<group>"; };
 		FC08D1A92B66F1C8000589FC /* UIImageViewExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensionTests.swift; sourceTree = "<group>"; };
+		FC08D1AB2B6704C3000589FC /* AttributedStringBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedStringBuilderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				FC08D18C2B64A074000589FC /* DateUtilTests.swift */,
 				FC08D1A72B66EF43000589FC /* TimelineViewModelTests.swift */,
 				FC08D1A92B66F1C8000589FC /* UIImageViewExtensionTests.swift */,
+				FC08D1AB2B6704C3000589FC /* AttributedStringBuilderTests.swift */,
 			);
 			path = OpenTweetTests;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC08D1A82B66EF43000589FC /* TimelineViewModelTests.swift in Sources */,
+				FC08D1AC2B6704C3000589FC /* AttributedStringBuilderTests.swift in Sources */,
 				009C4C811D9F0CD600F0BC6C /* OpenTweetTests.swift in Sources */,
 				FC08D1AA2B66F1C8000589FC /* UIImageViewExtensionTests.swift in Sources */,
 				FC08D18D2B64A074000589FC /* DateUtilTests.swift in Sources */,
