@@ -1,3 +1,36 @@
+A Note From Doug
+----------------
+
+Howdy! This was fun. I, of course, ended up getting off in the weeds building a service for fetching, processing, and caching avatar images, before telling myself that's WAY out of scope, and to knock it off, even though I stopped short of actually caching assets between launches.
+
+The git commit history could have been a lot cleaner if I had a better plan for tackling this. I would be ashamed to send in a PR in a team where someone had to make sense of my approach from what you see in main here. Sorry!
+
+I think I handled the basics within a couple hours, but it's been piecemeal working on it today, with a lot of interruptions and context switching. Fetching / parsing / displaying everything was pretty trivial.
+
+I'm also a bit rusty dealing with XIBs / storyboard, and there was a good bit of head-scratching over nominally trivial things, which reminded me of why I hate them to begin with (for instance, missing constraints on the UITableView, which caused cells to make the table bigger, but by just barely enough that it wasn't obvious what was happening. yay.)
+
+I think was probably also too clever by half in extending the TimelineViewController to handle both threads and the root timeline, as it ended up taking me down a road where separation of concerns was broken little by little, and my "model" ended up having way too much involvement with setting cell propeties and such. I cleaned that up a bit in the last couple commits, but still, it needs refactoring, and isn't very testable as-is.
+
+I'm also, unfortunately, chronically unable to say no to a challenge, and couldn't resist going after all the bonus stuff, even if it added a couple hours to the dev time. It was fun. Sue me :)
+
+Things I WISH I could have done, but I'm already probably way over the time you wanted me to spend...
+
+- Friendly date display (i.e. "40 minutes ago")
+- Displaying dates in the user's timezone (I'm assuming dates in the data are UTC)
+- Better UX for threading (i.e. if I'm in a thread, where's the tweet I tapped to take me there?)
+- Better separation of concerns between view controller and model. It's a mess.
+- API caching of JSON response, so multiple models don't have to re-fetch it (theoretical concern, but still)
+- Persistent caching of avatar URLs, and probably a pass at making that section more readable
+- Tracking down the inevitable race condition causing avatar image setting to behave strangely when reusing cells
+- Edge cases where reply counts aren't correct in Thread views.
+- Figure out why the UINavigationController I shoved in there isn't responding to dark mode changes.
+- More unidirectional data flow via some kind of observer pattern (i.e. combine), instead of the old-school MVC approach I used, where the VC manually refreshes data. Not very modern.
+- Cleanup the cheesy zoom-on-select animation. I can think of better ways to do it, but they all demand some refactoring of the cell view hierarchy.
+
+Thanks for taking the time to check this out, and I hope we get to talk further in the future!
+
+![Demo](OpenTweet.gif)
+
 OpenTweet
 =========
 
@@ -28,12 +61,9 @@ Minimum requirement
 * Fork the repo
 * Parse the json file included in the project
 * Display the tweets in the order the json file defines them. The app should display the author, the tweet and the date it was tweeted at. Tweets are variable length, so the cells must be properly sized to the content
-* When done, send a pull request to this project
+* When done, send a pull request to this project (e.g don't email me your project :))
 
 Keep in mind that the repo is public, so forking and sending a pull request will be shown in your public GitHub activity. If that doesn't work out for you for whatever reason, you can simply clone the repo locally, and submit your work back as a zip file to the recruiter.
-
-You may use UIKit or SwiftUI for this exercise. The provided template uses UIKit, but if you would like to use SwiftUI, it may be simpler to create a new xcode project and submit that instead.
-
 
 Bonuses (in no particular order)
 --------------------------------

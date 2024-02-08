@@ -15,6 +15,14 @@
 		009C4C811D9F0CD600F0BC6C /* OpenTweetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009C4C801D9F0CD600F0BC6C /* OpenTweetTests.swift */; };
 		009C4C8C1D9F0CD600F0BC6C /* OpenTweetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009C4C8B1D9F0CD600F0BC6C /* OpenTweetUITests.swift */; };
 		009C4C9B1D9F0D4100F0BC6C /* timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = 009C4C9A1D9F0D4100F0BC6C /* timeline.json */; };
+		91BF746228809835007C60B5 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF746128809835007C60B5 /* Timeline.swift */; };
+		91BF746328809835007C60B5 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF746128809835007C60B5 /* Timeline.swift */; };
+		91BF746528809F30007C60B5 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF746428809F30007C60B5 /* API.swift */; };
+		91BF746628809F30007C60B5 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF746428809F30007C60B5 /* API.swift */; };
+		91BF74672880A4E5007C60B5 /* timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = 009C4C9A1D9F0D4100F0BC6C /* timeline.json */; };
+		91F6F7312880B21F0097C740 /* AvatarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F6F7302880B21F0097C740 /* AvatarService.swift */; };
+		91F6F7382880E6BB0097C740 /* TimelineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F6F7372880E6BB0097C740 /* TimelineModel.swift */; };
+		91F6F73C2881D6130097C740 /* LocalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F6F73B2881D6130097C740 /* LocalAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +58,11 @@
 		009C4C8D1D9F0CD600F0BC6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		009C4C9A1D9F0D4100F0BC6C /* timeline.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = timeline.json; sourceTree = "<group>"; };
 		009C4C9D1D9F104800F0BC6C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		91BF746128809835007C60B5 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
+		91BF746428809F30007C60B5 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		91F6F7302880B21F0097C740 /* AvatarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarService.swift; sourceTree = "<group>"; };
+		91F6F7372880E6BB0097C740 /* TimelineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineModel.swift; sourceTree = "<group>"; };
+		91F6F73B2881D6130097C740 /* LocalAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +117,7 @@
 			children = (
 				009C4C6B1D9F0CD600F0BC6C /* AppDelegate.swift */,
 				009C4C6D1D9F0CD600F0BC6C /* TimelineViewController.swift */,
+				91F6F7372880E6BB0097C740 /* TimelineModel.swift */,
 				009C4C6F1D9F0CD600F0BC6C /* Main.storyboard */,
 				009C4C741D9F0CD600F0BC6C /* LaunchScreen.storyboard */,
 				009C4C721D9F0CD600F0BC6C /* Assets.xcassets */,
@@ -134,6 +148,10 @@
 			isa = PBXGroup;
 			children = (
 				009C4C9A1D9F0D4100F0BC6C /* timeline.json */,
+				91BF746128809835007C60B5 /* Timeline.swift */,
+				91BF746428809F30007C60B5 /* API.swift */,
+				91F6F73B2881D6130097C740 /* LocalAPI.swift */,
+				91F6F7302880B21F0097C740 /* AvatarService.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -206,7 +224,7 @@
 				TargetAttributes = {
 					009C4C671D9F0CD600F0BC6C = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = QPU8QS3E62;
+						DevelopmentTeam = E3SSWT62W9;
 						ProvisioningStyle = Automatic;
 					};
 					009C4C7B1D9F0CD600F0BC6C = {
@@ -259,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91BF74672880A4E5007C60B5 /* timeline.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +295,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91BF746228809835007C60B5 /* Timeline.swift in Sources */,
+				91F6F7382880E6BB0097C740 /* TimelineModel.swift in Sources */,
 				009C4C6E1D9F0CD600F0BC6C /* TimelineViewController.swift in Sources */,
+				91BF746528809F30007C60B5 /* API.swift in Sources */,
 				009C4C6C1D9F0CD600F0BC6C /* AppDelegate.swift in Sources */,
+				91F6F7312880B21F0097C740 /* AvatarService.swift in Sources */,
+				91F6F73C2881D6130097C740 /* LocalAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +309,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91BF746328809835007C60B5 /* Timeline.swift in Sources */,
+				91BF746628809F30007C60B5 /* API.swift in Sources */,
 				009C4C811D9F0CD600F0BC6C /* OpenTweetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,7 +477,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = QPU8QS3E62;
+				DEVELOPMENT_TEAM = E3SSWT62W9;
 				INFOPLIST_FILE = OpenTweet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -465,7 +491,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = QPU8QS3E62;
+				DEVELOPMENT_TEAM = E3SSWT62W9;
 				INFOPLIST_FILE = OpenTweet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
