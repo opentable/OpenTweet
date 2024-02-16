@@ -15,7 +15,7 @@ class FileManger_ExtensionTests: XCTestCase {
 
     func test_loadData() {
         let tweets = FileManager.default.loadData()
-        XCTAssertEqual(tweets.count, 7)
+        XCTAssertEqual(tweets.count, 9)
         let first = tweets[0]
         XCTAssertEqual(first.id, "00001")
         XCTAssertEqual(first.author, "@randomInternetStranger")

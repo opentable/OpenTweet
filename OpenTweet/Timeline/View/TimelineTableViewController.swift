@@ -9,7 +9,7 @@
 import UIKit
 
 enum Section {
-  case tweets
+    case tweets
 }
 
 typealias DataSource = UITableViewDiffableDataSource<Section, TweetViewCellData>
@@ -23,18 +23,19 @@ class TimelineTableViewController: UITableViewController {
         navigationItem.title = "Timeline"
         presenter = TimelineCollectionPresenter(dataSource: makeDataSource())
         presenter.applySnapshot(animatingDifferences: false)
+        addPullToRefresh()
     }
 
     private func makeDataSource() -> DataSource {
-      let dataSource = DataSource(
-        tableView: tableView,
-        cellProvider: { (tableView, indexPath, data) -> UITableViewCell? in
-            return self.setupCell(tableView, indexPath, data)
-      })
-      return dataSource
+        let dataSource = DataSource(
+            tableView: tableView,
+            cellProvider: { (tableView, indexPath, data) -> UITableViewCell? in
+                return self.setupCell(tableView, indexPath, data)
+            })
+        return dataSource
     }
 
-    private func setupCell(_ tableView: UITableView, 
+    private func setupCell(_ tableView: UITableView,
                            _ indexPath: IndexPath,
                            _ data: TweetViewCellData) -> UITableViewCell? {
         let cell = tableView.dequeueReusableCell(
@@ -42,5 +43,20 @@ class TimelineTableViewController: UITableViewController {
             for: indexPath) as? TweetTableViewCell
         cell?.setup(with: data)
         return cell
+    }
+
+    private func addPullToRefresh() {
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self,
+                                        action: #selector(pulldown), for: .valueChanged)
+        tableView.refreshControl?.tintColor = .clear
+    }
+
+    @objc func pulldown() {
+        presenter.loadNewTweets(from: FileManager.default.getNewsTweet())
+//        table.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.refreshControl?.endRefreshing()
+        }
     }
 }
