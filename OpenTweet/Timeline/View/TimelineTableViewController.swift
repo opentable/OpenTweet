@@ -8,37 +8,39 @@
 
 import UIKit
 
-private let reuseIdentifier = "TweetViewCell"
+enum Section {
+  case tweets
+}
+
+typealias DataSource = UITableViewDiffableDataSource<Section, TweetViewCellData>
 
 class TimelineTableViewController: UITableViewController {
 
-    private var viewModel = TimelineCollectionPresenter()
+    private var presenter: TimelineCollectionPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Timeline"
+        presenter = TimelineCollectionPresenter(dataSource: makeDataSource())
+        presenter.applySnapshot(animatingDifferences: false)
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.sections
+    private func makeDataSource() -> DataSource {
+      let dataSource = DataSource(
+        tableView: tableView,
+        cellProvider: { (tableView, indexPath, data) -> UITableViewCell? in
+            return self.setupCell(tableView, indexPath, data)
+      })
+      return dataSource
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.items
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? TweetTableViewCell else { return UITableViewCell() }
-
-        // Configure the cell
-        cell.setup(with: viewModel.getTweet(at: indexPath.row), isSelected: viewModel.selectedRow == indexPath.row)
+    private func setupCell(_ tableView: UITableView, 
+                           _ indexPath: IndexPath,
+                           _ data: TweetViewCellData) -> UITableViewCell? {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: TweetTableViewCell.reuseIdentifier,
+            for: indexPath) as? TweetTableViewCell
+        cell?.setup(with: data)
         return cell
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.select(row: indexPath.row)
-        tableView.reloadData()
     }
 }

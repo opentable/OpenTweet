@@ -52,6 +52,22 @@
                 "content": "@ot_competitor it's ok, just let it out. There's enough room for the both of us.",
                 "inReplyTo": "00004",
                 "date": "2020-09-30T10:33:00-08:00"
+                },
+                {
+                "id": "00008",
+                "author": "@otuser",
+                "avatar": "https://avatars1.githubusercontent.com/u/536608?v=3&s=460",
+                "content": "This is great",
+                "inReplyTo": "00004",
+                "date": "2019-09-30T10:33:00-08:00"
+                },
+                {
+                "id": "00009",
+                "author": "@randomInternetStranger",
+                "content": "@otuser OMG where have YOU been all my life?",
+                "avatar": "https://i.imgflip.com/ohrrn.jpg",
+                "inReplyTo": "00042",
+                "date": "2019-09-30T09:42:00-08:00"
                 }
                 ]
 }

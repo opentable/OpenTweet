@@ -39,3 +39,18 @@ class TweetViewCellData {
         }.resume()
     }
 }
+
+extension TweetViewCellData: Hashable {
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(author)
+        hasher.combine(content)
+        hasher.combine(date)
+    }
+
+    static func == (lhs: TweetViewCellData, rhs: TweetViewCellData) -> Bool {
+        return lhs.author == rhs.author &&
+        lhs.content == rhs.content &&
+        lhs.date == rhs.date
+    }
+}

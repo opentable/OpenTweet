@@ -8,43 +8,38 @@
 
 import UIKit
 
+typealias Snapshot = NSDiffableDataSourceSnapshot<Section, TweetViewCellData>
+
 class TimelineCollectionPresenter {
 
-    private var tweets: [TweetViewCellData]
-    var selectedRow = -1
+    private var dataSource: DataSource
+    var tweets: [TweetViewCellData]
 
-    var sections: Int {
-        return 1
+    init(dataSource: DataSource, tweets: [Tweet] = FileManager.default.loadData()) {
+        self.dataSource = dataSource
+        self.tweets = Self.tweetsCellSetup(from: tweets)
     }
 
-    var items: Int {
-        return tweets.count
-    }
-
-    init(tweets: [Tweet] = FileManager.default.loadData()) {
+    private static func tweetsCellSetup(from tweets: [Tweet]) -> [TweetViewCellData] {
         let sorted = tweets.sorted(by: { t1, t2 in
             t1.date > t2.date
         })
-        self.tweets = [TweetViewCellData]()
+        var tweets = [TweetViewCellData]()
         sorted.forEach { tweet in
             let cellData = TweetViewCellData(
                 author: tweet.author,
                 content: tweet.content,
                 date: tweet.date,
                 avatar: tweet.avatar)
-            self.tweets.append(cellData)
+            tweets.append(cellData)
         }
+        return tweets
     }
 
-    func getTweet(at index: Int) -> TweetViewCellData {
-        return tweets[index]
-    }
-
-    func select(row: Int) {
-        if selectedRow == row {
-            selectedRow = -1
-        } else {
-            selectedRow = row
-        }
+    func applySnapshot(animatingDifferences: Bool = true) {
+        var snapshot = Snapshot()
+        snapshot.appendSections([.tweets])
+        snapshot.appendItems(tweets)
+        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
 }

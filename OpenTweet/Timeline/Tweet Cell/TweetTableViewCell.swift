@@ -14,6 +14,8 @@ protocol ImageReloader {
 
 class TweetTableViewCell: UITableViewCell {
 
+    static let reuseIdentifier = "TweetViewCell"
+
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
@@ -21,28 +23,17 @@ class TweetTableViewCell: UITableViewCell {
 
     private var viewModel: TweetViewCellPresenter!
 
-    func setup(with cellData: TweetViewCellData, isSelected: Bool) {
+    func setup(with cellData: TweetViewCellData) {
         viewModel = TweetViewCellPresenter(cellData: cellData)
-        setupViews(isSelected)
+        setupViews()
         cellData.loadAvatarImage(self)
     }
 
-    private func setupViews(_ isSelected: Bool) {
+    private func setupViews() {
         avatarImageView.image = viewModel.avatarImage
         authorLabel.text = viewModel.author
         tweetLabel.attributedText = viewModel.content
         dateLabel.text = viewModel.date
-
-        setupBorder(isSelected)
-    }
-
-    private func setupBorder(_ highlight: Bool) {
-        if highlight {
-            layer.borderColor = UIColor.blue.cgColor
-            layer.borderWidth = 1
-        } else {
-            layer.borderWidth = 0
-        }
     }
 }
 
