@@ -1,5 +1,5 @@
 //
-//  TweetViewCell.swift
+//  TweetTableViewCell.swift
 //  OpenTweet
 //
 //  Created by Michael Charland on 2024-02-05.
@@ -12,13 +12,12 @@ protocol ImageReloader {
     func update(with: UIImage)
 }
 
-class TweetViewCell: UICollectionViewCell {
+class TweetTableViewCell: UITableViewCell {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var cellWidth: NSLayoutConstraint!
 
     private var viewModel: TweetViewCellPresenter!
 
@@ -34,7 +33,6 @@ class TweetViewCell: UICollectionViewCell {
         tweetLabel.attributedText = viewModel.content
         dateLabel.text = viewModel.date
 
-        cellWidth.constant = UIScreen.main.bounds.width - 16
         setupBorder(isSelected)
     }
 
@@ -48,7 +46,7 @@ class TweetViewCell: UICollectionViewCell {
     }
 }
 
-extension TweetViewCell: ImageReloader {
+extension TweetTableViewCell: ImageReloader {
     func update(with newImage: UIImage) {
         DispatchQueue.main.async {
             self.avatarImageView.image = newImage
