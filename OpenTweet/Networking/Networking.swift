@@ -4,32 +4,26 @@ import Alamofire
 class Networking {
     static let shared = Networking()
     private var utilityQueue = DispatchQueue.global(qos: .utility)
+    private var customDecoder: JSONDecoder {
+        let jsonDecoder = JSONDecoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ'"
+
+        jsonDecoder.dateDecodingStrategy = .formatted(formatter)
+        
+        return jsonDecoder
+    }
     
     // add async/await
+    // error handling
     func retrieveTweets(fileName: String) {
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else { return }
         
         AF.request(url)
                 .validate(statusCode: 200..<300)
                 .validate(contentType: ["application/json"])
-            //            .responseDecodable(of: [String: AnyObject].self, queue: utilityQueue) { response in
-            //                debugPrint(response)
-            //            }
-                .response { response in
-                    switch response.result {
-                    case .success(let data):
-                        guard let foundData = data else { return }
-                        
-                        do {
-                            if let json = try JSONSerialization.jsonObject(with: foundData, options: []) as? [String: Any] {
-                                print(json)
-                            }
-                        } catch {
-                            print("fail")
-                        }
-                    case .failure(let error):
-                        print("fail")
-                    }
+                .responseDecodable(of: ResponseData.self, queue: utilityQueue, decoder: customDecoder) { response in
+                    debugPrint(response)
                 }
     }
 }
