@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       timelineService: timelineService
     )
     appCoordinator?.start()
-    
-    let viewController = TimelineViewController(viewModel: TimelineViewModel(timelineService: timelineService))
     window?.rootViewController = navigationController
     window?.makeKeyAndVisible()
     

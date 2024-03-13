@@ -76,6 +76,7 @@ class TweetView: UIView {
     imageView.clipsToBounds = true
     imageView.backgroundColor = .gray
     imageView.layer.cornerRadius = 20
+    imageView.image = UIImage(systemName: "person.fill")
     return imageView
   }()
   
@@ -130,26 +131,43 @@ class TweetView: UIView {
     authorLabel.text = tweet.author
     timestampLabel.text = tweet.date.timelineTimestamp()
     contentLabel.attributedText = styledAttributedString(for: tweet.content)
+    if let avatar = tweet.avatar, let avatarUrl = URL(string: avatar) {
+      avatarImageView.loadImage(from: avatarUrl)
+    } else {
+      avatarImageView.image = .init(systemName: "person.fill")
+      avatarImageView.tintColor = hashStringToColor(tweet.author)
+    }
   }
   
   func reset() {
+    avatarImageView.image = nil
+    avatarImageView.tintColor = nil
   }
   
   private func styledAttributedString(for content: String) -> NSAttributedString {
-      let stringBuilder = AttributedStringBuilder(string: content)
-      
-      let detectors: [(detector: TextPatternDetector, color: UIColor)] = [
-          (MentionDetector(), .link),
-          (LinkDetector(), .systemBlue)
-      ]
-      
-      for (detector, color) in detectors {
-          let matches = detector.matches(in: content)
-          matches.forEach { match in
-              stringBuilder.attributedString.addAttributes([.foregroundColor: color], range: match.range)
-          }
+    let stringBuilder = AttributedStringBuilder(string: content)
+    
+    let detectors: [(detector: TextPatternDetector, color: UIColor)] = [
+      (MentionDetector(), .systemBlue),
+      (LinkDetector(), .systemBlue)
+    ]
+    
+    for (detector, color) in detectors {
+      let matches = detector.matches(in: content)
+      matches.forEach { match in
+        stringBuilder.attributedString.addAttributes([.foregroundColor: color], range: match.range)
       }
-
-      return stringBuilder.attributedString
+    }
+    
+    return stringBuilder.attributedString
+  }
+  
+  private func hashStringToColor(_ input: String) -> UIColor {
+    let scaleFactor = 0.6 // Adjust for darker (0) to lighter (1) colors
+    let hash = input.hashValue
+    let red = CGFloat((hash & 0xFF0000) >> 16) / 255.0 * scaleFactor
+    let green = CGFloat((hash & 0x00FF00) >> 8) / 255.0 * scaleFactor
+    let blue = CGFloat(hash & 0x0000FF) / 255.0 * scaleFactor
+    return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
   }
 }
