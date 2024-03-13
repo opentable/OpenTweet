@@ -14,6 +14,12 @@ class TweetCell: UICollectionViewCell {
   
   let view = TweetView()
   
+  override var isHighlighted: Bool {
+    didSet {
+      updateHighlightedState()
+    }
+  }
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     view.translatesAutoresizingMaskIntoConstraints = false
@@ -33,6 +39,17 @@ class TweetCell: UICollectionViewCell {
   override func prepareForReuse() {
     super.prepareForReuse()
     view.reset()
+  }
+  
+  func updateHighlightedState() {
+    UIView.animate(withDuration: 0.2) { [weak self] in
+      guard let self else { return }
+      if self.isHighlighted {
+        self.view.backgroundColor = .lightGray
+      } else {
+        self.view.backgroundColor = .secondarySystemBackground
+      }
+    }
   }
   
   func configure(tweet: Tweet) {
