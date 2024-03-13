@@ -129,9 +129,27 @@ class TweetView: UIView {
   func configure(tweet: Tweet) {
     authorLabel.text = tweet.author
     timestampLabel.text = tweet.date.timelineTimestamp()
-    contentLabel.text = tweet.content
+    contentLabel.attributedText = styledAttributedString(for: tweet.content)
   }
   
   func reset() {
+  }
+  
+  private func styledAttributedString(for content: String) -> NSAttributedString {
+      let stringBuilder = AttributedStringBuilder(string: content)
+      
+      let detectors: [(detector: TextPatternDetector, color: UIColor)] = [
+          (MentionDetector(), .link),
+          (LinkDetector(), .systemBlue)
+      ]
+      
+      for (detector, color) in detectors {
+          let matches = detector.matches(in: content)
+          matches.forEach { match in
+              stringBuilder.attributedString.addAttributes([.foregroundColor: color], range: match.range)
+          }
+      }
+
+      return stringBuilder.attributedString
   }
 }
