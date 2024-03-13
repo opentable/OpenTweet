@@ -5,7 +5,7 @@ enum DecodableFailed: Error {
     case invalidRequiredParameter
 }
 
-struct Tweet: Decodable {
+struct Tweet: Decodable, Identifiable {
     let id: Int
     let author: String
     let avatarURL: URL?
@@ -16,7 +16,7 @@ struct Tweet: Decodable {
     private enum CodingKeys: String, CodingKey {
         case id
         case author
-        case avatarURL
+        case avatar
         case content
         case date
         case inReplyTo
@@ -33,9 +33,14 @@ struct Tweet: Decodable {
         
         self.id = idPrimitive
         self.author = try container.decode(String.self, forKey: .author)
-        self.avatarURL = try container.decodeIfPresent(URL.self, forKey: .avatarURL)
         self.content = try container.decode(String.self, forKey: .content)
         self.date = try container.decode(Date.self, forKey: .date)
+        
+        if let url = try container.decodeIfPresent(URL.self, forKey: .avatar) {
+            self.avatarURL = url
+        } else {
+            self.avatarURL = nil
+        }
         
         if let inReplyToText = try container.decodeIfPresent(String.self, forKey: .inReplyTo) {
             self.inReplyTo = Int(inReplyToText)

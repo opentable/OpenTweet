@@ -22,6 +22,7 @@
 		701C0C9F2BA0CEC600AD6177 /* TweetsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701C0C9E2BA0CEC600AD6177 /* TweetsDataProvider.swift */; };
 		701C0CA22BA0D34D00AD6177 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701C0CA12BA0D34D00AD6177 /* Tweet.swift */; };
 		701C0CA42BA0DF3400AD6177 /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701C0CA32BA0DF3400AD6177 /* ResponseData.swift */; };
+		701C0CA62BA12AA900AD6177 /* TweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701C0CA52BA12AA900AD6177 /* TweetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		701C0C9E2BA0CEC600AD6177 /* TweetsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsDataProvider.swift; sourceTree = "<group>"; };
 		701C0CA12BA0D34D00AD6177 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		701C0CA32BA0DF3400AD6177 /* ResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
+		701C0CA52BA12AA900AD6177 /* TweetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				701C0C672BA0C58E00AD6177 /* ContentView.swift */,
+				701C0CA52BA12AA900AD6177 /* TweetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				701C0C982BA0CAC700AD6177 /* Networking.swift in Sources */,
+				701C0CA62BA12AA900AD6177 /* TweetView.swift in Sources */,
 				701C0CA22BA0D34D00AD6177 /* Tweet.swift in Sources */,
 				701C0C682BA0C58E00AD6177 /* ContentView.swift in Sources */,
 				701C0C9F2BA0CEC600AD6177 /* TweetsDataProvider.swift in Sources */,

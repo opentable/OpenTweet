@@ -3,7 +3,6 @@ import Alamofire
 
 class Networking {
     static let shared = Networking()
-    private var utilityQueue = DispatchQueue.global(qos: .utility)
     private var customDecoder: JSONDecoder {
         let jsonDecoder = JSONDecoder()
         let formatter = DateFormatter()
@@ -14,16 +13,17 @@ class Networking {
         return jsonDecoder
     }
     
-    // add async/await
-    // error handling
-    func retrieveTweets(fileName: String) {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else { return }
+    func retrieveTweets(fileName: String) async -> Result<ResponseData, AFError> {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+            return .failure(.responseSerializationFailed(reason: .inputFileNil))
+        }
         
-        AF.request(url)
-                .validate(statusCode: 200..<300)
-                .validate(contentType: ["application/json"])
-                .responseDecodable(of: ResponseData.self, queue: utilityQueue, decoder: customDecoder) { response in
-                    debugPrint(response)
-                }
+        let dataTask = AF.request(url)
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .serializingDecodable(ResponseData.self, decoder: customDecoder)
+        let result = await dataTask.result
+        
+        return result
     }
 }
