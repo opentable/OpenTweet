@@ -8,13 +8,35 @@
 
 import Foundation
 
-struct Tweet: Hashable, Codable {
+final class Tweet: Hashable, Codable {
   let id: String
   let author: String
   let content: String
   let avatar: String?
   let date: Date
   let inReplyTo: String?
+  
+  var parentTweet: Tweet?
+  var replies: [Tweet]?
+  
+  init(id: String, author: String, content: String, avatar: String?, date: Date, inReplyTo: String?, parentTweet: Tweet? = nil, replies: [Tweet]? = nil) {
+    self.id = id
+    self.author = author
+    self.content = content
+    self.avatar = avatar
+    self.date = date
+    self.inReplyTo = inReplyTo
+    self.parentTweet = parentTweet
+    self.replies = replies
+  }
+  
+  static func == (lhs: Tweet, rhs: Tweet) -> Bool {
+    return lhs.id == rhs.id
+  }
+  
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
+  }
 }
 
 struct Timeline: Codable {

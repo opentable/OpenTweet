@@ -1,17 +1,17 @@
 //
-//  ViewController.swift
+//  ThreadViewController.swift
 //  OpenTweet
 //
-//  Created by Olivier Larivain on 9/30/16.
-//  Copyright © 2016 OpenTable, Inc. All rights reserved.
+//  Created by David Auld on 2024-03-13.
+//  Copyright © 2024 OpenTable, Inc. All rights reserved.
 //
 
 import UIKit
 import Combine
 
-class TimelineViewController: UIViewController {
+class ThreadViewController: UIViewController {
   
-  private var viewModel: TimelineViewModel
+  private var viewModel: ThreadViewModel
   private var dataSource: UICollectionViewDiffableDataSource<Int, Tweet>?
   private var subscriptions = Set<AnyCancellable>()
   
@@ -31,7 +31,7 @@ class TimelineViewController: UIViewController {
     return activityIndicator
   }()
   
-  init(viewModel: TimelineViewModel) {
+  init(viewModel: ThreadViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
@@ -42,7 +42,7 @@ class TimelineViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "OpenTweet"
+    title = "Thread"
     
     view.backgroundColor = .systemBackground
     view.addSubview(collectionView)
@@ -52,12 +52,11 @@ class TimelineViewController: UIViewController {
     setupObservers()
     setupDataSource()
     
-    collectionView.delegate = self
-    viewModel.fetchTimeline()
+    viewModel.fetchThread()
   }
 }
 
-private extension TimelineViewController {
+private extension ThreadViewController {
   func setupConstraints() {
     NSLayoutConstraint.activate([
       collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -121,18 +120,5 @@ private extension TimelineViewController {
     section.interGroupSpacing = 8
     section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
     return UICollectionViewCompositionalLayout(section: section)
-  }
-}
-
-extension TimelineViewController: UICollectionViewDelegate {
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let tweet = self.dataSource?.snapshot().itemIdentifiers[indexPath.item],
-          let replies = tweet.replies else { return }
-    
-    // Construct thread, adding parent if it exists, tweet itself, then the replies
-    var thread: [Tweet] = [tweet.parentTweet, tweet].compactMap({ $0 })
-    thread += replies
-    
-    viewModel.navigateToThread(thread: thread)
   }
 }
