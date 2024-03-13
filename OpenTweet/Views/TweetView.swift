@@ -12,6 +12,8 @@ private enum TweetViewConstants {
         static let sizeOfSide = 40.0
         static let placeholderImageName = "person"
     }
+    
+    static let colours: [Color] = [.green, .blue, .pink, .purple, .orange, .red, .yellow]
 }
 
 struct TweetView: View {
@@ -53,8 +55,8 @@ struct TweetView: View {
             .padding()
         }
         .background {
-            Color.green
-                .clipShape(.rect(cornerRadii: .init(topLeading: TweetViewConstants.Radii.cornerRadius, 
+            TweetViewConstants.colours.randomElement()
+                .clipShape(.rect(cornerRadii: .init(topLeading: TweetViewConstants.Radii.cornerRadius,
                                             bottomLeading: TweetViewConstants.Radii.cornerRadius,
                                             bottomTrailing: TweetViewConstants.Radii.cornerRadius,
                                             topTrailing: TweetViewConstants.Radii.cornerRadius)))
