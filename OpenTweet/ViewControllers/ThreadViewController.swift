@@ -17,11 +17,11 @@ final class ThreadViewController: UIViewController {
         var headerText: String {
             switch self {
             case .originalTweet:
-                return "Tweet Details"
+                return Constants.ThreadView.originalTweetHeaderTitle
             case .tweetRepliesTo:
-                return "Replies To"
+                return Constants.ThreadView.tweetRepliesToHeaderTitle
             case .tweetReplies:
-                return "Replies"
+                return Constants.ThreadView.tweetRepliesHeaderTitle
             }
         }
     }
@@ -46,10 +46,15 @@ final class ThreadViewController: UIViewController {
             subitems: [item]
         )
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 8
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
+        section.interGroupSpacing = Constants.Dimens.padding
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 0,
+            leading: Constants.Dimens.padding,
+            bottom: 0,
+            trailing: Constants.Dimens.padding
+        )
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                heightDimension: .absolute(40))
+                                                heightDimension: .absolute(Constants.ThreadView.headerHeight))
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
             elementKind: UICollectionView.elementKindSectionHeader,
@@ -92,7 +97,7 @@ final class ThreadViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.pinToSuperView()
         view.backgroundColor = .systemBackground
-        title = "Thread"
+        title = Constants.ThreadView.title
         
         setupDataSource()
         applySnapshot()
@@ -106,8 +111,8 @@ final class ThreadViewController: UIViewController {
             ) as? TweetCell else {
                 return UICollectionViewCell()
             }
-            cell.setup(tweet: itemIdentifier)
-            cell.layoutIfNeeded()
+            let tweetCellViewModel = TweetCellViewModel(tweet: itemIdentifier)
+            cell.setup(tweetCellViewModel)
             return cell
         })
         

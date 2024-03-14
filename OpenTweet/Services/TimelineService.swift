@@ -20,8 +20,8 @@ public enum TimelineServiceError: Error {
 
 final class TimelineService: TimelineServiceProtocol {
     func loadTimelineFeed() throws -> Timeline {
-        let filename = "timeline"
-        let fileType = "json"
+        let filename = Constants.TimelineService.fileName
+        let fileType = Constants.TimelineService.fileType
 
         guard let path = Bundle.main.url(forResource: filename, withExtension: fileType, subdirectory: nil) else {
             throw TimelineServiceError.filePathError

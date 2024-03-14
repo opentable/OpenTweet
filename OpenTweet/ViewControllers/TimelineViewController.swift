@@ -34,8 +34,13 @@ final class TimelineViewController: UIViewController {
             subitems: [item]
         )
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 8
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
+        section.interGroupSpacing = Constants.Dimens.padding
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 0,
+            leading: Constants.Dimens.padding,
+            bottom: 0,
+            trailing: Constants.Dimens.padding
+        )
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }()
@@ -69,7 +74,7 @@ final class TimelineViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.pinToSuperView()
         view.backgroundColor = .systemBackground
-        title = "Timeline"
+        title = Constants.TimelineView.title
     }
 
     private func setupDataSource() {
@@ -80,8 +85,8 @@ final class TimelineViewController: UIViewController {
             ) as? TweetCell else {
                 return UICollectionViewCell()
             }
-            cell.setup(tweet: itemIdentifier)
-            cell.layoutIfNeeded()
+            let tweetCellViewModel = TweetCellViewModel(tweet: itemIdentifier)
+            cell.setup(tweetCellViewModel)
             return cell
         })
     }
@@ -93,11 +98,17 @@ final class TimelineViewController: UIViewController {
                 guard let self = self else { return }
                 switch feedState {
                 case .loading:
-                    print("loading")
+                    break
                 case .loaded(timeline: let timeline):
                     self.feedLoaded(timeline: timeline)
                 case .error(let error):
-                    print(error)
+                    let alert = UIAlertController(
+                        title: "Alert",
+                        message: error.localizedDescription,
+                        preferredStyle: .alert
+                    )
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
+                    self.present(alert, animated: true)
                 }
             }
             .store(in: &cancellables)

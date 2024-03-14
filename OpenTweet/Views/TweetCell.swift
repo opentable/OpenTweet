@@ -8,8 +8,15 @@
 
 import UIKit
 
+protocol TweetCellInterface {
+    var userAvatarImageUrl: String? { get }
+    var authorLabelText: String { get }
+    var dateLabelText: String { get }
+    var contentLabelAttributedText: NSMutableAttributedString { get }
+}
+
 final class TweetCell: UICollectionViewCell {
-    static let reuseIdentifier: String = "OpenTweet.TweetCell"
+    static let reuseIdentifier: String = Constants.TweetCell.reuseIdentifier
     
     var onCellTapped: Completion?
     
@@ -31,7 +38,7 @@ final class TweetCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = Constants.TweetCell.avatarImageCornerRadius
         imageView.backgroundColor = .gray
         imageView.image = UIImage(systemName: "person.circle.fill")
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,6 +86,19 @@ final class TweetCell: UICollectionViewCell {
         self.transform = .identity
     }
     
+    func setup(_ tweetCellViewModel: TweetCellInterface) {
+        backgroundColor = .lightGray
+        authorLabel.text = tweetCellViewModel.authorLabelText
+        dateLabel.text = tweetCellViewModel.dateLabelText
+        contentLabel.attributedText = tweetCellViewModel.contentLabelAttributedText
+        
+        if let avatarUrl = tweetCellViewModel.userAvatarImageUrl {
+            userAvatarImageView.loadImageFromURL(urlString: avatarUrl)
+        }
+        
+        layoutIfNeeded()
+    }
+    
     func setup(tweet: Tweet) {
         backgroundColor = .gray
         authorLabel.text = tweet.author
@@ -96,25 +116,30 @@ final class TweetCell: UICollectionViewCell {
     }
     
     private func selectionAnimation(isSelected: Bool) {
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
-            self?.transform = isSelected ? CGAffineTransform(scaleX: 1.05, y: 1.05) : .identity
-        }, completion: { [weak self] _ in
-            if !isSelected {
-                self?.transform = .identity
-            } else {
-                self?.onCellTapped?()
-                self?.isSelected = false
-            }
-        })
+        UIView.animate(
+            withDuration: 0.3,
+            animations: { [weak self] in
+                self?.transform = isSelected ? CGAffineTransform(scaleX: 1.05, y: 1.05) : .identity
+            },
+            completion: { [weak self] _ in
+                if !isSelected {
+                    self?.transform = .identity
+                } else {
+                    self?.onCellTapped?()
+                    self?.isSelected = false
+                }
+            })
     }
     
     private func toggleIsHighlighted() {
-        UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut], animations: {
-            self.alpha = self.isHighlighted ? 0.9 : 1.0
-            self.transform = self.isHighlighted ?
-            CGAffineTransform.identity.scaledBy(x: 0.97, y: 0.97) :
-            CGAffineTransform.identity
-        })
+        UIView.animate(
+            withDuration: 0.1,
+            delay: 0,
+            options: [.curveEaseOut],
+            animations: {
+                self.alpha = self.isHighlighted ? 0.9 : 1.0
+            }
+        )
     }
     
     private func addSubviews() {
@@ -125,40 +150,40 @@ final class TweetCell: UICollectionViewCell {
     }
     
     private func addRoundedCorners() {
-        contentView.layer.cornerRadius = 5
+        contentView.layer.cornerRadius = Constants.Dimens.cellCornerRadius
         contentView.layer.masksToBounds = true
         
-        layer.cornerRadius = 5
+        layer.cornerRadius = Constants.Dimens.cellCornerRadius
         layer.masksToBounds = false
     }
     
     private func layoutConstraints() {
         let constraints: [NSLayoutConstraint] = [
-            userAvatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            userAvatarImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            userAvatarImageView.heightAnchor.constraint(equalToConstant: 50),
-            userAvatarImageView.widthAnchor.constraint(equalToConstant: 50),
+            userAvatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Dimens.padding),
+            userAvatarImageView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Dimens.padding),
+            userAvatarImageView.heightAnchor.constraint(equalToConstant: Constants.TweetCell.avatarImageHeight),
+            userAvatarImageView.widthAnchor.constraint(equalToConstant: Constants.TweetCell.avatarImageWidth),
             
-            authorLabel.leadingAnchor.constraint(equalTo: userAvatarImageView.trailingAnchor, constant: 12),
-            authorLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            authorLabel.leadingAnchor.constraint(equalTo: userAvatarImageView.trailingAnchor, constant: Constants.Dimens.padding),
+            authorLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Dimens.padding),
+            authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
             
             dateLabel.leadingAnchor.constraint(equalTo: authorLabel.leadingAnchor),
-            dateLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 12),
-            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            dateLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: Constants.Dimens.padding),
+            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
             
-            contentLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            contentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            contentLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
+            contentLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Dimens.padding),
+            contentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
+            contentLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.Dimens.padding)
         ]
         
         NSLayoutConstraint.activate(constraints)
         
-        let contentLabelTopConstraintOne = contentLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 20)
+        let contentLabelTopConstraintOne = contentLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: Constants.Dimens.padding)
         contentLabelTopConstraintOne.priority = .defaultLow
         contentLabelTopConstraintOne.isActive = true
         
-        let contentLabelTopConstraintTwo = contentLabel.topAnchor.constraint(greaterThanOrEqualTo: userAvatarImageView.bottomAnchor, constant: 20)
+        let contentLabelTopConstraintTwo = contentLabel.topAnchor.constraint(greaterThanOrEqualTo: userAvatarImageView.bottomAnchor, constant: Constants.Dimens.padding)
         contentLabelTopConstraintTwo.priority = .required
         contentLabelTopConstraintTwo.isActive = true
     }

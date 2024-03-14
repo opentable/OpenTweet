@@ -9,11 +9,11 @@
 import UIKit
 
 final class ThreadHeaderView: UICollectionReusableView {
-    static let reuseIdentifier: String = "OpenTweet.ThreadHeaderView"
+    static let reuseIdentifier: String = Constants.ThreadHeader.reuseIdentifier
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .systemGray
+        label.textColor = .darkGray
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -46,10 +46,10 @@ final class ThreadHeaderView: UICollectionReusableView {
     
     private func layoutConstraints() {
         let constraints: [NSLayoutConstraint] = [
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 4),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Dimens.padding),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Dimens.padding),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.Dimens.padding),
         ]
         NSLayoutConstraint.activate(constraints)
     }

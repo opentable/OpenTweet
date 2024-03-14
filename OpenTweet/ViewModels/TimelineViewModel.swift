@@ -47,8 +47,12 @@ final class TimelineViewModel: TimelineViewModelInterface {
                 await MainActor.run { [result] in
                     self.feedState = .loaded(timeline: result.timeline)
                 }
-            } catch {
-                
+            } catch TimelineServiceError.dataConversionError {
+                self.feedState = .error(.dataConversionError)
+            } catch TimelineServiceError.decodingError {
+                self.feedState = .error(.decodingError)
+            } catch TimelineServiceError.filePathError {
+                self.feedState = .error(.filePathError)
             }
         }
     }
