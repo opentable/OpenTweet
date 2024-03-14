@@ -12,6 +12,12 @@ enum Constants {
     enum Dimens {
         static let cellCornerRadius: CGFloat = 5
         static let padding: CGFloat = 12
+
+        enum FontSize {
+            static let small: CGFloat = 12
+            static let body: CGFloat = 16
+            static let large: CGFloat = 20
+        }
     }
     
     enum TweetCell {

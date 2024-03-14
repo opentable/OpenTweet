@@ -77,8 +77,8 @@ final class ThreadViewController: UIViewController {
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: ThreadHeaderView.reuseIdentifier
         )
-        collectionView.isUserInteractionEnabled = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.allowsSelection = false
         return collectionView
     }()
     

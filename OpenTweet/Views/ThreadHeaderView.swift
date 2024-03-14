@@ -14,6 +14,7 @@ final class ThreadHeaderView: UICollectionReusableView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
+        label.font = .italicSystemFont(ofSize: Constants.Dimens.FontSize.body)
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false

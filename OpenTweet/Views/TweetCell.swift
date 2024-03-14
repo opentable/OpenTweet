@@ -48,7 +48,8 @@ final class TweetCell: UICollectionViewCell {
     private lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemBlue
-        label.numberOfLines = 0
+        label.font = .boldSystemFont(ofSize: Constants.Dimens.FontSize.large)
+        label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -57,14 +58,17 @@ final class TweetCell: UICollectionViewCell {
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
+        label.font = .systemFont(ofSize: Constants.Dimens.FontSize.small)
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .right
         return label
     }()
     
     private lazy var contentLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
+        label.font = .systemFont(ofSize: Constants.Dimens.FontSize.body)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -165,26 +169,49 @@ final class TweetCell: UICollectionViewCell {
             userAvatarImageView.widthAnchor.constraint(equalToConstant: Constants.TweetCell.avatarImageWidth),
             
             authorLabel.leadingAnchor.constraint(equalTo: userAvatarImageView.trailingAnchor, constant: Constants.Dimens.padding),
-            authorLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Dimens.padding),
+            authorLabel.centerYAnchor.constraint(equalTo: userAvatarImageView.centerYAnchor),
             authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
-            
-            dateLabel.leadingAnchor.constraint(equalTo: authorLabel.leadingAnchor),
-            dateLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: Constants.Dimens.padding),
-            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
             
             contentLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Dimens.padding),
             contentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
-            contentLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.Dimens.padding)
+            contentLabel.topAnchor.constraint(equalTo: userAvatarImageView.bottomAnchor, constant: Constants.Dimens.padding),
+            
+            dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Dimens.padding),
+            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
+            dateLabel.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant: Constants.Dimens.padding),
+            dateLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.Dimens.padding)
         ]
-        
         NSLayoutConstraint.activate(constraints)
-        
-        let contentLabelTopConstraintOne = contentLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: Constants.Dimens.padding)
-        contentLabelTopConstraintOne.priority = .defaultLow
-        contentLabelTopConstraintOne.isActive = true
-        
-        let contentLabelTopConstraintTwo = contentLabel.topAnchor.constraint(greaterThanOrEqualTo: userAvatarImageView.bottomAnchor, constant: Constants.Dimens.padding)
-        contentLabelTopConstraintTwo.priority = .required
-        contentLabelTopConstraintTwo.isActive = true
     }
+
+//    private func layoutConstraints() {
+//        let constraints: [NSLayoutConstraint] = [
+//            userAvatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Dimens.padding),
+//            userAvatarImageView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Dimens.padding),
+//            userAvatarImageView.heightAnchor.constraint(equalToConstant: Constants.TweetCell.avatarImageHeight),
+//            userAvatarImageView.widthAnchor.constraint(equalToConstant: Constants.TweetCell.avatarImageWidth),
+//            
+//            authorLabel.leadingAnchor.constraint(equalTo: userAvatarImageView.trailingAnchor, constant: Constants.Dimens.padding),
+//            authorLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Dimens.padding),
+//            authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
+//            
+//            dateLabel.leadingAnchor.constraint(equalTo: authorLabel.leadingAnchor),
+//            dateLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: Constants.Dimens.padding),
+//            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
+//            
+//            contentLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Dimens.padding),
+//            contentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
+//            contentLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.Dimens.padding)
+//        ]
+//        
+//        NSLayoutConstraint.activate(constraints)
+//        
+//        let contentLabelTopConstraintOne = contentLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: Constants.Dimens.padding)
+//        contentLabelTopConstraintOne.priority = .defaultLow
+//        contentLabelTopConstraintOne.isActive = true
+//        
+//        let contentLabelTopConstraintTwo = contentLabel.topAnchor.constraint(greaterThanOrEqualTo: userAvatarImageView.bottomAnchor, constant: Constants.Dimens.padding)
+//        contentLabelTopConstraintTwo.priority = .required
+//        contentLabelTopConstraintTwo.isActive = true
+//    }
 }
