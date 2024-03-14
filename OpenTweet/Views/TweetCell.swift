@@ -20,14 +20,6 @@ final class TweetCell: UICollectionViewCell {
     
     var onCellTapped: Completion?
     
-    override var isSelected: Bool {
-        didSet {
-            if isSelected != oldValue {
-                selectionAnimation(isSelected: isSelected)
-            }
-        }
-    }
-    
     override var isHighlighted: Bool {
         didSet {
             toggleIsHighlighted()
@@ -119,25 +111,9 @@ final class TweetCell: UICollectionViewCell {
         layoutConstraints()
     }
     
-    private func selectionAnimation(isSelected: Bool) {
-        UIView.animate(
-            withDuration: 0.3,
-            animations: { [weak self] in
-                self?.transform = isSelected ? CGAffineTransform(scaleX: 1.05, y: 1.05) : .identity
-            },
-            completion: { [weak self] _ in
-                if !isSelected {
-                    self?.transform = .identity
-                } else {
-                    self?.onCellTapped?()
-                    self?.isSelected = false
-                }
-            })
-    }
-    
     private func toggleIsHighlighted() {
         UIView.animate(
-            withDuration: 0.1,
+            withDuration: 0.2,
             delay: 0,
             options: [.curveEaseOut],
             animations: {
@@ -183,35 +159,4 @@ final class TweetCell: UICollectionViewCell {
         ]
         NSLayoutConstraint.activate(constraints)
     }
-
-//    private func layoutConstraints() {
-//        let constraints: [NSLayoutConstraint] = [
-//            userAvatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Dimens.padding),
-//            userAvatarImageView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Dimens.padding),
-//            userAvatarImageView.heightAnchor.constraint(equalToConstant: Constants.TweetCell.avatarImageHeight),
-//            userAvatarImageView.widthAnchor.constraint(equalToConstant: Constants.TweetCell.avatarImageWidth),
-//            
-//            authorLabel.leadingAnchor.constraint(equalTo: userAvatarImageView.trailingAnchor, constant: Constants.Dimens.padding),
-//            authorLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.Dimens.padding),
-//            authorLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
-//            
-//            dateLabel.leadingAnchor.constraint(equalTo: authorLabel.leadingAnchor),
-//            dateLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: Constants.Dimens.padding),
-//            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
-//            
-//            contentLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Dimens.padding),
-//            contentLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.Dimens.padding),
-//            contentLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.Dimens.padding)
-//        ]
-//        
-//        NSLayoutConstraint.activate(constraints)
-//        
-//        let contentLabelTopConstraintOne = contentLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: Constants.Dimens.padding)
-//        contentLabelTopConstraintOne.priority = .defaultLow
-//        contentLabelTopConstraintOne.isActive = true
-//        
-//        let contentLabelTopConstraintTwo = contentLabel.topAnchor.constraint(greaterThanOrEqualTo: userAvatarImageView.bottomAnchor, constant: Constants.Dimens.padding)
-//        contentLabelTopConstraintTwo.priority = .required
-//        contentLabelTopConstraintTwo.isActive = true
-//    }
 }

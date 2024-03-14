@@ -125,15 +125,9 @@ final class TimelineViewController: UIViewController {
 
 extension TimelineViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? TweetCell else {
+        guard let tweet = self.dataSource?.snapshot().itemIdentifiers[indexPath.item] else {
             return
         }
-        cell.onCellTapped = { [weak self] in
-            guard let self = self else { return }
-            guard let tweet = self.dataSource?.snapshot().itemIdentifiers[indexPath.item] else {
-                return
-            }
-            viewModel.tappedOn(tweet: tweet)
-        }
+        viewModel.tappedOn(tweet: tweet)
     }
 }
