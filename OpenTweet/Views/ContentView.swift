@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Define constants used at the top level of the app's view.
 private enum AppConstants {
     struct AppText {
         static let title = "OpenTweet"
@@ -10,8 +11,8 @@ private enum AppConstants {
     }
 }
 
+/// Top-level view from which all data is passed down view heirarchy. 
 struct ContentView: View {
-    // MARK: State, Binding, Environment properties
     @ObservedObject var dataProvider: TweetsDataProvider
     
     var body: some View {

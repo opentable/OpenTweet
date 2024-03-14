@@ -1,10 +1,12 @@
 import Foundation
 import Alamofire
 
+/// Custom failure type only for parsing individual tweet.
 enum DecodableFailed: Error {
     case invalidRequiredParameter
 }
 
+/// Individual tweet model.
 struct Tweet: Decodable, Identifiable {
     let id: Int
     let author: String
@@ -22,6 +24,14 @@ struct Tweet: Decodable, Identifiable {
         case inReplyTo
     }
     
+    /**
+     Ensures JSON String type is converted to primitive types of model.
+     
+     - Parameters:
+         - decoder: A Decoder.
+     - Fixme: If this function throws for one tweet, `ResponseData` becomes empty.
+     - Returns: An attributed string with mentions highlighted.
+     */
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         

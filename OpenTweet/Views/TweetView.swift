@@ -2,6 +2,7 @@ import Foundation
 import SwiftUI
 import RegexBuilder
 
+/// Define constants used only in `TweetView`.
 private enum TweetViewConstants {
     struct Radii {
         static let cornerRadius = 20.0
@@ -22,6 +23,7 @@ private enum TweetViewConstants {
     static let colours: [Color] = [.cyan, .teal, .pink, .purple, .orange, .red, .yellow]
 }
 
+/// This is a cell view used within a list.
 struct TweetView: View {
     @State var tweet: Tweet
     
@@ -77,6 +79,14 @@ struct TweetView: View {
         }
     }
     
+    /**
+     Finds mentions (ie. @username) and updates their attributes within text block.
+     
+     - Parameters:
+         - attributedText: Text with pre-existing attributes
+     
+     - Returns: Full `attributedText` string with mentions highlighted.
+     */
     private func highlightMentions(from attributedText: NSMutableAttributedString) -> AttributedString {
         let mentionRegex = TweetViewConstants.Regex.mentions
         var textFullyAttributed = AttributedString(attributedText)
@@ -94,6 +104,14 @@ struct TweetView: View {
         return textFullyAttributed
     }
     
+    /**
+     Finds links (ie. `https://`) and updates their attributes within text block.
+     
+     - Parameters:
+         - attributedText: Text with pre-existing attributes
+     
+     - Returns: Full `attributedText` string with links highlighted and working.
+     */
     private func highlightLinks(from attributedText: NSMutableAttributedString) -> AttributedString {
         let urlRegex = TweetViewConstants.Regex.url
         var textFullyAttributed = AttributedString(attributedText)
