@@ -18,8 +18,6 @@ protocol TweetCellInterface {
 final class TweetCell: UICollectionViewCell {
     static let reuseIdentifier: String = Constants.TweetCell.reuseIdentifier
     
-    var onCellTapped: Completion?
-    
     override var isHighlighted: Bool {
         didSet {
             toggleIsHighlighted()
@@ -93,17 +91,6 @@ final class TweetCell: UICollectionViewCell {
         }
         
         layoutIfNeeded()
-    }
-    
-    func setup(tweet: Tweet) {
-        backgroundColor = .gray
-        authorLabel.text = tweet.author
-        dateLabel.text = tweet.date.description
-        contentLabel.text = tweet.content
-        
-        if let avatarUrl = tweet.avatar {
-            userAvatarImageView.loadImageFromURL(urlString: avatarUrl)
-        }
     }
     
     override func layoutSubviews() {
