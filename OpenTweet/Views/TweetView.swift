@@ -16,9 +16,10 @@ private enum TweetViewConstants {
     
     struct Regex {
         static let mentions = /[@]\w+/
+        static let url = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/
     }
     
-    static let colours: [Color] = [.green, .blue, .pink, .purple, .orange, .red, .yellow]
+    static let colours: [Color] = [.cyan, .teal, .pink, .purple, .orange, .red, .yellow]
 }
 
 struct TweetView: View {
@@ -48,8 +49,15 @@ struct TweetView: View {
             .padding()
             
             HStack {
-                Text(highlightMentions(from: tweet.content))
-                    .font(.subheadline)
+                if let highlightedMentions = [highlightMentions(from: NSMutableAttributedString(string: tweet.content))].map({ highlightLinks(from: NSMutableAttributedString($0))}).first {
+                    Text(highlightedMentions)
+                        .font(.subheadline)
+                } else {
+                    Text(tweet.content)
+                        .font(.subheadline)
+                }
+                
+                
             }
             .padding()
             
@@ -69,35 +77,36 @@ struct TweetView: View {
         }
     }
     
-    private func highlightMentions(from text: String) -> AttributedString {
+    private func highlightMentions(from attributedText: NSMutableAttributedString) -> AttributedString {
         let mentionRegex = TweetViewConstants.Regex.mentions
-        var textFullyAttributed = AttributedString(text)
+        var textFullyAttributed = AttributedString(attributedText)
         
-        let mentions = text.matches(of: mentionRegex)
+        let mentions = attributedText.string.matches(of: mentionRegex)
         
         for mention in mentions {
             guard let existingAttributedRange = textFullyAttributed.range(of: mention.output) else { continue }
             
-            textFullyAttributed[existingAttributedRange].foregroundColor = Color.indigo
+            textFullyAttributed[existingAttributedRange].foregroundColor = .green
             textFullyAttributed[existingAttributedRange].underlineStyle = .single
-            textFullyAttributed[existingAttributedRange].underlineColor = .magenta
+            textFullyAttributed[existingAttributedRange].underlineColor = .green
         }
         
         return textFullyAttributed
     }
     
-    private func highlightLinks(from text: String) -> AttributedString {
-        let mentionRegex = TweetViewConstants.Regex.mentions
-        var textFullyAttributed = AttributedString(text)
+    private func highlightLinks(from attributedText: NSMutableAttributedString) -> AttributedString {
+        let urlRegex = TweetViewConstants.Regex.url
+        var textFullyAttributed = AttributedString(attributedText)
+
+        let urls = attributedText.string.matches(of: urlRegex)
         
-        let mentions = text.matches(of: mentionRegex)
-        
-        for mention in mentions {
-            guard let existingAttributedRange = textFullyAttributed.range(of: mention.output) else { continue }
+        for url in urls {
+            guard let existingAttributedRange = textFullyAttributed.range(of: url.output.0) else { continue }
             
-            textFullyAttributed[existingAttributedRange].foregroundColor = Color.indigo
+            textFullyAttributed[existingAttributedRange].foregroundColor = Color.blue
             textFullyAttributed[existingAttributedRange].underlineStyle = .single
-            textFullyAttributed[existingAttributedRange].underlineColor = .magenta
+            textFullyAttributed[existingAttributedRange].underlineColor = .blue
+            textFullyAttributed[existingAttributedRange].link = URL(string: String(url.output.0))
         }
         
         return textFullyAttributed
