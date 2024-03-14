@@ -10,11 +10,15 @@ import Foundation
 import Combine
 
 class TimelineViewModel: ObservableObject {
-  enum State {
+  enum State: Equatable {
     case idle
     case loading
     case success(tweets: [Tweet])
-    case error(Error)
+    case error(TimelineError)
+  }
+  
+  enum TimelineError: Error {
+    case decodingError
   }
   
   @Published var state: State = .idle
@@ -34,13 +38,13 @@ class TimelineViewModel: ObservableObject {
       .receive(on: RunLoop.main)
       .sink { [weak self] completion in
         switch completion {
-        case .failure(let error):
-          self?.state = .error(error)
+        case .failure(_):
+          self?.state = .error(TimelineError.decodingError)
         case .finished:
           break
         }
       } receiveValue: { [weak self] data in
-        // Parse thread information
+        // Map thread information to tweets
         data.timeline.forEach { tweet in
           tweet.parentTweet = data.timeline.first(where: { $0.id == tweet.inReplyTo })
           tweet.replies = data.timeline.filter { $0.inReplyTo == tweet.id }

@@ -25,7 +25,7 @@ extension Bundle {
       .eraseToAnyPublisher()
   }
   
-  func decodeable<T: Decodable>(fileName: String) -> AnyPublisher<T, Error> {
+  func decodable<T: Decodable>(fileName: String) -> AnyPublisher<T, Error> {
     let decoder = JSONDecoder()
     decoder.dateDecodingStrategy = .iso8601
     return readFile(file: fileName)

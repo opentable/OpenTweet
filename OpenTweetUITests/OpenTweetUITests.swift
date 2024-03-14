@@ -28,9 +28,12 @@ class OpenTweetUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testNavigationToThreads() {
+      let app = XCUIApplication()
+      let collectionViewsQuery = app.collectionViews
+      collectionViewsQuery.cells.firstMatch.tap()
+      
+      let detailsView = app.navigationBars["Thread"]
+      XCTAssertTrue(detailsView.waitForExistence(timeout: 5))
     }
-    
 }
