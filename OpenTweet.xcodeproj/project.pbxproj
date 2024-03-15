@@ -178,9 +178,8 @@
 				009C4C9A1D9F0D4100F0BC6C /* timeline.json */,
 				114D89362BA29D6200B1C0FB /* timelineTestOne.json */,
 			);
-			name = Data;
-			path = "/Users/qi/Desktop/iOS Application/OpenTable/OpenTweet/Data";
-			sourceTree = "<absolute>";
+			path = Data;
+			sourceTree = "<group>";
 		};
 		114D89112B9FF89C00B1C0FB /* ViewControllers */ = {
 			isa = PBXGroup;
