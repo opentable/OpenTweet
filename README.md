@@ -1,3 +1,32 @@
+Simulator Screenshots
+
+<hr/>
+
+Timeline
+
+<img src="https://github.com/huqiLeo/OpenTweet/assets/149120778/4ca00f78-96d6-48b5-87bc-658a5e40914d" width="250">
+
+<hr/>
+
+Thread with no reply and no parent thread
+
+<img src="https://github.com/huqiLeo/OpenTweet/assets/149120778/2443c499-e1ab-47b5-ba20-53ed84e4f548" width="250">
+
+<hr/>
+
+Thread with replies
+
+<img src="https://github.com/huqiLeo/OpenTweet/assets/149120778/b58c9648-249d-4090-b1b7-d7ff4bd50216" width="250">
+
+<hr/>
+
+Thread with parent thread
+
+<img src="https://github.com/huqiLeo/OpenTweet/assets/149120778/1620793f-f57a-4f03-a0bb-b8557b160803" width="250">
+
+
+
+
 OpenTweet
 =========
 
